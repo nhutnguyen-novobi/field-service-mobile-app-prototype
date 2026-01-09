@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
       tailwind.config = {
@@ -41,97 +40,102 @@
 <style>
     /* Mobile-first: handled by shared/nav.js */
   </style>
-  </head>
-<body class="font-display bg-black flex justify-center items-center min-h-screen p-4 no-mobile-frame">
-<!-- Phone Simulator Container -->
-<div class="relative w-full max-w-[390px] h-[844px] bg-background-light dark:bg-background-dark rounded-[40px] overflow-hidden border-[8px] border-neutral-900 shadow-2xl flex flex-col group/design-root">
-<!-- Status Bar Area -->
-<div class="h-12 w-full flex justify-between items-end pb-2 px-6 text-white bg-gradient-to-b from-black/60 to-transparent z-10 absolute top-0 left-0">
-<span class="text-sm font-semibold">9:41</span>
-<div class="flex gap-1.5 items-center">
-<span class="material-symbols-outlined text-[18px]">signal_cellular_alt</span>
-<span class="material-symbols-outlined text-[18px]">wifi</span>
-<span class="material-symbols-outlined text-[18px]">battery_full</span>
-</div>
-</div>
-<!-- Background App Context (Blurred to show overlay effect) -->
-<div class="flex-1 relative flex flex-col">
-<!-- Simulated App Header -->
-<div class="pt-14 pb-4 px-5 flex items-center justify-between">
-<button class="p-2 rounded-full hover:bg-white/5"><span class="material-symbols-outlined text-white">menu</span></button>
-<div class="text-white font-bold text-lg">Task #4402</div>
-<button class="p-2 rounded-full hover:bg-white/5"><span class="material-symbols-outlined text-white">notifications</span></button>
-</div>
-<!-- Simulated App Content -->
-<div class="flex-1 px-5 space-y-6 opacity-30">
-<div class="w-full aspect-video bg-surface-dark rounded-xl relative overflow-hidden">
-<img class="w-full h-full object-cover mix-blend-overlay" data-alt="Industrial machinery repair context" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB55qQofRWQP05lRaJ6Dd9ZizdkFp6i5kR8y2DAO8-dYgBeuDoktMw9RcLjsajfnr8IR0yzz9zvqDSoiC7DjW-iEBNtgyICBK8XVT-VBA2HB4whQgz_7hI7IfEdpcqE9sCyYvGp4ymtZfyC7V_QuitiGeJ7XKC46_ZiMOg0Ei80L6-M9GeN08TcWJQxHqdkIv5gStQ90LJItwcCNw66p4lz2MUyXTXs4t9QutVXc4RimIBiI1MddMbu9ckonnNva2ykLYGsPs0nq4M"/>
-<div class="absolute inset-0 bg-gradient-to-t from-background-dark to-transparent"></div>
-</div>
-<div class="space-y-3">
-<div class="h-4 w-1/3 bg-surface-dark rounded-full"></div>
-<div class="h-3 w-3/4 bg-white/20 rounded-full"></div>
-<div class="h-3 w-1/2 bg-white/20 rounded-full"></div>
-</div>
-<div class="grid grid-cols-2 gap-4">
-<div class="h-24 bg-surface-dark rounded-xl"></div>
-<div class="h-24 bg-surface-dark rounded-xl"></div>
-</div>
-</div>
-</div>
-<!-- DIMMED OVERLAY BACKDROP -->
-<div class="absolute inset-0 bg-black/60 backdrop-blur-[2px] z-20 flex flex-col justify-end">
-<!-- BOTTOM SHEET COMPONENT -->
-<!-- Using bg-[#181111] to match the component snippets provided, ensuring dark mode consistency -->
-<div class="w-full bg-[#181111] dark:bg-[#181111] rounded-t-[32px] shadow-[0_-10px_40px_rgba(0,0,0,0.7)] flex flex-col items-stretch animate-slideUp pb-8 border-t border-white/5">
-<!-- BottomSheetHandle -->
-<div class="flex flex-col items-center pt-3 pb-1 w-full" data-component="BottomSheetHandle">
-<div class="h-1.5 w-12 rounded-full bg-[#3d2929]"></div>
-</div>
-<!-- Error Icon Status -->
-<div class="flex justify-center pt-8 pb-4">
-<div class="relative">
-<!-- Glow effect -->
-<div class="absolute inset-0 bg-primary/20 blur-xl rounded-full"></div>
-<!-- Icon Container -->
-<div class="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center relative border border-primary/20">
-<span class="material-symbols-outlined text-primary text-[40px]" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;">wifi_off</span>
-</div>
-</div>
-</div>
-<!-- HeadlineText -->
-<h2 class="text-white tracking-tight text-[26px] font-bold leading-tight px-6 text-center pb-2 pt-2">Sync Failed</h2>
-<!-- BodyText -->
-<p class="text-gray-300 text-[15px] font-normal leading-relaxed px-8 text-center text-pretty">
-                    We couldn't upload your recent changes to <span class="text-white font-medium">Task #4402</span> due to a connection timeout.
-                </p>
-<!-- MetaText -->
-<p class="text-[#ba9c9c] text-sm font-medium leading-normal pb-8 pt-3 px-4 text-center">
-                    Last attempt: 10:42 AM
-                </p>
-<!-- Actions Container -->
-<div class="flex flex-col px-6 gap-3">
-<!-- Primary Button: Retry -->
-<button class="group flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-[52px] px-5 bg-primary text-white gap-2.5 text-[15px] font-bold leading-normal tracking-wide shadow-lg shadow-red-900/40 hover:bg-red-600 transition-all active:scale-[0.98]">
-<span class="material-symbols-outlined text-[20px] transition-transform group-hover:rotate-180 duration-500">refresh</span>
-<span>Retry Now</span>
-</button>
-<!-- Secondary Button: View Details -->
-<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-[52px] px-5 bg-transparent border border-white/10 text-white hover:bg-white/5 gap-2.5 text-[15px] font-semibold leading-normal tracking-wide transition-all active:scale-[0.98]">
-<span class="material-symbols-outlined text-[20px] text-gray-400">terminal</span>
-<span>View Error Logs</span>
-</button>
-<!-- Tertiary Action: Dismiss -->
-<button class="mt-2 text-gray-500 hover:text-gray-300 text-sm font-medium py-2 transition-colors">
-                        Dismiss
-                    </button>
-</div>
-<!-- Bottom spacing for Home Indicator -->
-<div class="h-6"></div>
-</div>
-</div>
-<!-- iOS Home Indicator -->
-<div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-[134px] h-[5px] bg-white rounded-full z-50"></div>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark min-h-screen flex flex-col">
+<!-- Main Container -->
+<div class="relative flex min-h-screen w-full flex-col bg-background-light dark:bg-background-dark">
+    <!-- Status Bar Area -->
+    <div class="h-12 w-full flex justify-between items-end pb-2 px-6 text-white bg-gradient-to-b from-black/60 to-transparent">
+        <span class="text-sm font-semibold">9:41</span>
+        <div class="flex gap-1.5 items-center">
+            <span class="material-symbols-outlined text-[18px]">signal_cellular_alt</span>
+            <span class="material-symbols-outlined text-[18px]">wifi</span>
+            <span class="material-symbols-outlined text-[18px]">battery_full</span>
+        </div>
+    </div>
+    
+    <!-- App Header -->
+    <div class="pb-4 px-5 flex items-center justify-between">
+        <button class="p-2 rounded-full hover:bg-white/5"><span class="material-symbols-outlined text-white">menu</span></button>
+        <div class="text-white font-bold text-lg">Task #4402</div>
+        <button class="p-2 rounded-full hover:bg-white/5"><span class="material-symbols-outlined text-white">notifications</span></button>
+    </div>
+    
+    <!-- App Content (dimmed background) -->
+    <div class="flex-1 px-5 space-y-6 opacity-30">
+        <div class="w-full aspect-video bg-surface-dark rounded-xl relative overflow-hidden">
+            <img class="w-full h-full object-cover mix-blend-overlay" alt="Industrial machinery repair context" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB55qQofRWQP05lRaJ6Dd9ZizdkFp6i5kR8y2DAO8-dYgBeuDoktMw9RcLjsajfnr8IR0yzz9zvqDSoiC7DjW-iEBNtgyICBK8XVT-VBA2HB4whQgz_7hI7IfEdpcqE9sCyYvGp4ymtZfyC7V_QuitiGeJ7XKC46_ZiMOg0Ei80L6-M9GeN08TcWJQxHqdkIv5gStQ90LJItwcCNw66p4lz2MUyXTXs4t9QutVXc4RimIBiI1MddMbu9ckonnNva2ykLYGsPs0nq4M"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-background-dark to-transparent"></div>
+        </div>
+        <div class="space-y-3">
+            <div class="h-4 w-1/3 bg-surface-dark rounded-full"></div>
+            <div class="h-3 w-3/4 bg-white/20 rounded-full"></div>
+            <div class="h-3 w-1/2 bg-white/20 rounded-full"></div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+            <div class="h-24 bg-surface-dark rounded-xl"></div>
+            <div class="h-24 bg-surface-dark rounded-xl"></div>
+        </div>
+    </div>
+    
+    <!-- DIMMED OVERLAY BACKDROP -->
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-[2px] flex flex-col justify-end">
+        <!-- BOTTOM SHEET COMPONENT -->
+        <div class="w-full bg-[#181111] rounded-t-[32px] shadow-[0_-10px_40px_rgba(0,0,0,0.7)] flex flex-col items-stretch animate-slideUp pb-8 border-t border-white/5">
+            <!-- BottomSheetHandle -->
+            <div class="flex flex-col items-center pt-3 pb-1 w-full">
+                <div class="h-1.5 w-12 rounded-full bg-[#3d2929]"></div>
+            </div>
+            
+            <!-- Error Icon Status -->
+            <div class="flex justify-center pt-8 pb-4">
+                <div class="relative">
+                    <!-- Glow effect -->
+                    <div class="absolute inset-0 bg-primary/20 blur-xl rounded-full"></div>
+                    <!-- Icon Container -->
+                    <div class="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center relative border border-primary/20">
+                        <span class="material-symbols-outlined text-primary text-[40px]" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;">wifi_off</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- HeadlineText -->
+            <h2 class="text-white tracking-tight text-[26px] font-bold leading-tight px-6 text-center pb-2 pt-2">Sync Failed</h2>
+            
+            <!-- BodyText -->
+            <p class="text-gray-300 text-[15px] font-normal leading-relaxed px-8 text-center text-pretty">
+                We couldn't upload your recent changes to <span class="text-white font-medium">Task #4402</span> due to a connection timeout.
+            </p>
+            
+            <!-- MetaText -->
+            <p class="text-[#ba9c9c] text-sm font-medium leading-normal pb-8 pt-3 px-4 text-center">
+                Last attempt: 10:42 AM
+            </p>
+            
+            <!-- Actions Container -->
+            <div class="flex flex-col px-6 gap-3">
+                <!-- Primary Button: Retry -->
+                <button class="group flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-[52px] px-5 bg-primary text-white gap-2.5 text-[15px] font-bold leading-normal tracking-wide shadow-lg shadow-red-900/40 hover:bg-red-600 transition-all active:scale-[0.98]">
+                    <span class="material-symbols-outlined text-[20px] transition-transform group-hover:rotate-180 duration-500">refresh</span>
+                    <span>Retry Now</span>
+                </button>
+                
+                <!-- Secondary Button: View Details -->
+                <button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-[52px] px-5 bg-transparent border border-white/10 text-white hover:bg-white/5 gap-2.5 text-[15px] font-semibold leading-normal tracking-wide transition-all active:scale-[0.98]">
+                    <span class="material-symbols-outlined text-[20px] text-gray-400">terminal</span>
+                    <span>View Error Logs</span>
+                </button>
+                
+                <!-- Tertiary Action: Dismiss -->
+                <button class="mt-2 text-gray-500 hover:text-gray-300 text-sm font-medium py-2 transition-colors">
+                    Dismiss
+                </button>
+            </div>
+            
+            <!-- Bottom spacing -->
+            <div class="h-6"></div>
+        </div>
+    </div>
 </div>
 <script src="../shared/nav.js"></script>
 </body></html>
