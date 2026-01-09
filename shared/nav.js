@@ -4,7 +4,7 @@
  */
 
 // ============================================
-// MOBILE-FIRST RESPONSIVE WRAPPER
+// MOBILE-FIRST RESPONSIVE STYLES
 // ============================================
 function initMobileFrame() {
     // Check if this screen opts out of mobile-first styling
@@ -12,108 +12,51 @@ function initMobileFrame() {
         return;
     }
     
+    // Add mobile-container class to body for CSS targeting
+    document.body.classList.add('mobile-responsive');
+    
     // Inject mobile-first responsive styles
     const mobileStyles = document.createElement('style');
     mobileStyles.id = 'mobile-frame-styles';
     mobileStyles.textContent = `
         /* Mobile-First Base Styles */
-        html, body {
+        html, body.mobile-responsive {
             margin: 0;
             padding: 0;
             min-height: 100vh;
             min-height: 100dvh;
         }
         
-        body {
-            min-height: 100vh !important;
-            min-height: 100dvh !important;
-            display: flex !important;
-            justify-content: center !important;
-            align-items: flex-start !important;
-        }
-        
-        /* Desktop/Tablet - Constrain to mobile width for demo */
+        /* Desktop/Tablet - Center content at mobile width */
         @media (min-width: 481px) {
-            body > *:first-child:not(#mobile-frame-styles):not(#floating-nav):not(script):not(style):not(link) {
-                max-width: 430px !important;
-                width: 100% !important;
-                min-height: 100vh !important;
-                min-height: 100dvh !important;
-                overflow-y: auto !important;
-                overflow-x: hidden !important;
-                position: relative !important;
-                margin: 0 auto !important;
+            body.mobile-responsive {
+                display: flex;
+                justify-content: center;
+            }
+            
+            body.mobile-responsive > div:first-of-type {
+                max-width: 430px;
+                width: 100%;
+                box-shadow: 0 0 40px rgba(0,0,0,0.3);
             }
         }
         
-        /* Mobile - Full width, natural scroll */
+        /* Mobile - Full width */
         @media (max-width: 480px) {
-            body > *:first-child:not(#mobile-frame-styles):not(#floating-nav):not(script):not(style):not(link) {
-                max-width: 100% !important;
-                width: 100% !important;
-                min-height: 100vh !important;
-                min-height: 100dvh !important;
-                overflow: visible !important;
+            body.mobile-responsive > div:first-of-type {
+                max-width: 100%;
+                width: 100%;
             }
         }
         
         /* Ensure smooth scrolling on touch devices */
-        .overflow-y-auto, .overflow-auto, [class*="overflow-y-auto"], [class*="overflow-auto"] {
+        * {
             -webkit-overflow-scrolling: touch;
-        }
-        
-        /* Custom scrollbar */
-        @media (min-width: 481px) {
-            body > *:first-child:not(#mobile-frame-styles):not(#floating-nav):not(script):not(style):not(link)::-webkit-scrollbar {
-                width: 4px;
-            }
-            body > *:first-child:not(#mobile-frame-styles):not(#floating-nav):not(script):not(style):not(link)::-webkit-scrollbar-track {
-                background: transparent;
-            }
-            body > *:first-child:not(#mobile-frame-styles):not(#floating-nav):not(script):not(style):not(link)::-webkit-scrollbar-thumb {
-                background: rgba(255,255,255,0.2);
-                border-radius: 4px;
-            }
         }
     `;
     
     // Insert at the beginning of head
     document.head.insertBefore(mobileStyles, document.head.firstChild);
-    
-    // Wrap body content if needed for proper structure
-    wrapBodyContent();
-}
-
-function wrapBodyContent() {
-    // Get all direct children of body that are actual content
-    const body = document.body;
-    const children = Array.from(body.children);
-    
-    // Check if there's already a wrapper div
-    const hasWrapper = children.some(child => {
-        return child.tagName === 'DIV' && 
-               (child.classList.contains('relative') || 
-                child.classList.contains('flex') ||
-                child.id === 'app-container');
-    });
-    
-    // If no clear wrapper exists and body has multiple children, wrap them
-    if (!hasWrapper && children.length > 1) {
-        const wrapper = document.createElement('div');
-        wrapper.id = 'app-container';
-        wrapper.className = 'relative flex flex-col min-h-screen w-full bg-background-light dark:bg-background-dark';
-        
-        children.forEach(child => {
-            if (child.tagName !== 'SCRIPT' && 
-                child.tagName !== 'STYLE' && 
-                child.id !== 'mobile-frame-styles' &&
-                child.id !== 'floating-nav') {
-                wrapper.appendChild(child);
-            }
-        });
-        
-        body.insertBefore(wrapper, body.firstChild);
-    }
 }
 
 // Navigation configuration

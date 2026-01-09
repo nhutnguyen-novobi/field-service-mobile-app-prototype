@@ -43,7 +43,9 @@
     /* Mobile-first: handled by shared/nav.js */
   </style>
   </head>
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased pb-28">
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased">
+<!-- Main Container -->
+<div class="relative flex flex-col min-h-screen w-full bg-background-light dark:bg-background-dark">
 <!-- Header -->
 <div class="sticky top-0 z-50 bg-background-light dark:bg-background-dark border-b border-slate-200 dark:border-slate-800/60 backdrop-blur-md bg-opacity-90 dark:bg-opacity-90">
 <div class="flex items-center p-4 justify-between">
@@ -168,7 +170,7 @@
 </button>
 </div>
 <!-- Sticky Bottom Action Bar -->
-<div class="fixed bottom-0 left-0 right-0 p-4 bg-background-light dark:bg-background-dark border-t border-slate-200 dark:border-slate-800 z-50">
+<div class="sticky bottom-0 p-4 bg-background-light dark:bg-background-dark border-t border-slate-200 dark:border-slate-800 z-50">
 <div class="max-w-md mx-auto">
 <!-- Disabled State: bg-slate-700 text-slate-500 -->
 <!-- Active State would be: bg-primary text-white shadow-lg shadow-primary/30 -->
@@ -177,6 +179,7 @@
 <span class="material-symbols-outlined text-lg">lock</span>
 </button>
 <p class="text-center text-[10px] text-slate-400 dark:text-slate-600 mt-2">Complete all required tasks to finish</p>
+</div>
 </div>
 </div>
 <script src="../shared/nav.js"></script>

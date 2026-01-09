@@ -61,7 +61,9 @@
     /* Mobile-first: handled by shared/nav.js */
   </style>
   </head>
-<body class="bg-background-light dark:bg-background-dark font-display antialiased text-slate-900 dark:text-white pb-32">
+<body class="bg-background-light dark:bg-background-dark font-display antialiased text-slate-900 dark:text-white">
+<!-- Main Container -->
+<div class="relative flex flex-col min-h-screen w-full bg-background-light dark:bg-background-dark">
 <!-- Sticky Header -->
 <div class="sticky top-0 z-40 bg-background-light dark:bg-background-dark border-b border-gray-200 dark:border-border-dark">
 <div class="flex items-center p-4 justify-between h-16">
@@ -257,7 +259,7 @@
 </div>
 </div>
 <!-- Sticky Bottom Actions -->
-<div class="fixed bottom-0 left-0 w-full glass-panel border-t border-gray-200 dark:border-border-dark px-4 py-4 z-50">
+<div class="sticky bottom-0 w-full glass-panel border-t border-gray-200 dark:border-border-dark px-4 py-4 z-50">
 <div class="max-w-lg mx-auto flex flex-col gap-3">
 <!-- Summary Row inside action bar -->
 <div class="flex justify-between items-center text-xs text-muted px-1">
@@ -269,6 +271,7 @@
 <span class="material-symbols-outlined">check_circle</span>
                 Complete Task
             </a>
+</div>
 </div>
 </div>
 <script src="../shared/nav.js"></script>

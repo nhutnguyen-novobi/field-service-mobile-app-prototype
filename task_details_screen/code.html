@@ -50,7 +50,7 @@
 <!-- Main Container -->
 <div class="relative flex flex-col min-h-screen w-full bg-background-light dark:bg-background-dark">
 <!-- Sticky Header (TopAppBar) -->
-<header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md px-4 py-3 border-b border-gray-200 dark:border-border-dark">
+<header class="sticky top-0 z-50 flex items-center justify-between bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md px-4 py-3 border-b border-gray-200 dark:border-border-dark">
 <a href="../task_list_screen/code.html" class="flex items-center justify-center w-10 h-10 -ml-2 rounded-full hover:bg-black/5 dark:hover:bg-white/5 active:scale-95 transition-transform">
 <span class="material-symbols-outlined text-slate-900 dark:text-white">arrow_back_ios_new</span>
 </a>
@@ -60,7 +60,7 @@
 </button>
 </header>
 <!-- Scrollable Content -->
-<main class="flex-1 pt-[72px] pb-[100px] px-4 w-full max-w-md mx-auto">
+<main class="flex-1 pb-[100px] px-4 w-full">
 <!-- Headline & Status -->
 <div class="mb-6">
 <div class="flex items-start justify-between gap-4 mb-3">
@@ -175,9 +175,9 @@
 </div>
 </section>
 </main>
-<!-- Fixed Bottom Action Bar -->
-<div class="fixed bottom-0 left-0 right-0 p-4 bg-white dark:bg-surface-dark border-t border-gray-200 dark:border-border-dark pb-8 z-50">
-<div class="flex gap-3 max-w-md mx-auto">
+<!-- Bottom Action Bar -->
+<div class="sticky bottom-0 p-4 bg-white dark:bg-surface-dark border-t border-gray-200 dark:border-border-dark pb-8 z-50">
+<div class="flex gap-3 w-full">
 <!-- Secondary Action (More options if needed, here hidden or secondary) -->
 <!-- Primary Action -->
 <a href="../start_repair_task_screen/code.html" class="flex-1 h-12 bg-primary hover:bg-blue-600 active:bg-blue-700 text-white rounded-lg font-bold text-base shadow-lg shadow-blue-900/20 flex items-center justify-center gap-2 transition-all no-underline">

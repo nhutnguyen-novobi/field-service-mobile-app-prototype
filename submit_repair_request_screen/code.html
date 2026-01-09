@@ -32,7 +32,9 @@
     /* Mobile-first: handled by shared/nav.js */
   </style>
   </head>
-<body class="bg-background-light dark:bg-background-dark font-display antialiased text-slate-900 dark:text-white pb-24">
+<body class="bg-background-light dark:bg-background-dark font-display antialiased text-slate-900 dark:text-white">
+<!-- Main Container -->
+<div class="relative flex flex-col min-h-screen w-full bg-background-light dark:bg-background-dark">
 <!-- Top App Bar -->
 <div class="sticky top-0 z-10 bg-background-light dark:bg-background-dark/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
 <div class="flex items-center justify-between px-4 py-3">
@@ -128,7 +130,7 @@
 </section>
 </main>
 <!-- Bottom Action Bar (Sticky) -->
-<div class="fixed bottom-0 left-0 right-0 p-4 bg-white dark:bg-background-dark/80 backdrop-blur-md border-t border-gray-200 dark:border-gray-800 z-20">
+<div class="sticky bottom-0 p-4 bg-white dark:bg-background-dark/80 backdrop-blur-md border-t border-gray-200 dark:border-gray-800 z-20">
 <div class="max-w-md mx-auto">
 <a href="../repair_tickets_list_screen/code.html" class="w-full h-12 rounded-xl bg-primary hover:bg-blue-600 text-white font-semibold text-base shadow-lg shadow-blue-900/20 flex items-center justify-center gap-2 transition-all active:scale-[0.98] no-underline">
 <span class="material-symbols-outlined">send</span>
@@ -138,6 +140,7 @@
 <span class="material-symbols-outlined text-[14px]">wifi_off</span>
                 Offline mode enabled. Request will sync automatically.
             </p>
+</div>
 </div>
 </div>
 <script src="../shared/nav.js"></script>
