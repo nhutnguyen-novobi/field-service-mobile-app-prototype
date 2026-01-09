@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Start Repair Task</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#1c2127",
+                        "border-dark": "#2d3748",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.375rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101922; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3748; 
+            border-radius: 2px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased">
+<div class="relative flex h-full min-h-screen w-full flex-col bg-background-light dark:bg-background-dark font-display overflow-x-hidden">
+<!-- Header -->
+<div class="sticky top-0 z-10 flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between border-b border-gray-200 dark:border-border-dark/50">
+<a href="../task_details_screen/code.html" class="text-gray-900 dark:text-white flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors cursor-pointer">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</a>
+<h2 class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-10">
+                Task #OD-2024-891
+            </h2>
+</div>
+<!-- Main Content -->
+<div class="flex-1 flex flex-col p-4 gap-6 pb-32">
+<!-- Hero Card: Job Context -->
+<div class="relative overflow-hidden rounded-2xl bg-surface-dark shadow-lg ring-1 ring-white/10">
+<!-- Background Image with Overlay -->
+<div class="absolute inset-0 z-0">
+<img class="h-full w-full object-cover opacity-60" data-alt="Industrial factory building exterior with metal pipes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5eS5zL93PT2isnZJAuRoIZL98XwtANhpMcF0cDEjyH5jV9Qifsj90VindYQsAEI0-Jk2Kido1bGdK9x-sUUWfdxeRE5rwtpEXW4xyBfl1_N11ZuyOxlQbia-y2Juf2y92jTAd7oYvswY_TQKwyyUcl9HniGMAl8hIdbXQXgGNwxB4_QOvrJywyNt3A62HqRLs6b0_pdP7OtLYzSJplzaTDeQin4AF-Nzd_dedaULVPYcB9-02hhIUKhKoCUYV7ad9f74czGnKZMY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dark via-surface-dark/80 to-transparent"></div>
+</div>
+<div class="relative z-10 flex flex-col p-5 pt-20">
+<div class="mb-3 inline-flex self-start rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-medium text-emerald-400 border border-emerald-500/30 backdrop-blur-md">
+                        Ready to Start
+                    </div>
+<h1 class="text-2xl font-bold text-white mb-1">Acme Industries HQ</h1>
+<p class="text-gray-300 text-sm font-medium mb-4">Industrial HVAC Unit - Model XJ9</p>
+<div class="flex items-center gap-2 text-gray-400 text-xs">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span>123 Industrial Pkwy, Sector 4 (3.2 km)</span>
+</div>
+</div>
+</div>
+<!-- Quick Actions Grid -->
+<div class="grid grid-cols-2 gap-3">
+<button class="flex flex-col items-center justify-center gap-2 rounded-xl border border-border-dark bg-surface-dark p-4 active:scale-95 transition-transform hover:bg-surface-dark/80">
+<div class="flex size-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined">near_me</span>
+</div>
+<span class="text-sm font-semibold text-white">Navigate</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 rounded-xl border border-border-dark bg-surface-dark p-4 active:scale-95 transition-transform hover:bg-surface-dark/80">
+<div class="flex size-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined">call</span>
+</div>
+<span class="text-sm font-semibold text-white">Call Client</span>
+</button>
+</div>
+<!-- Pre-Flight Checklist -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between px-1">
+<h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">Pre-Flight Safety</h3>
+<span class="text-xs text-primary font-medium">0/2 Completed</span>
+</div>
+<div class="flex flex-col gap-2 rounded-xl bg-surface-dark p-1 border border-border-dark">
+<!-- Checkbox Item 1 -->
+<label class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 cursor-pointer transition-colors group">
+<div class="relative flex items-center">
+<input class="peer h-5 w-5 cursor-pointer appearance-none rounded border-2 border-gray-500 bg-transparent transition-all checked:border-primary checked:bg-primary hover:border-gray-400 focus:ring-0 focus:ring-offset-0" type="checkbox"/>
+<span class="material-symbols-outlined absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[16px] text-white opacity-0 peer-checked:opacity-100 pointer-events-none">check</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-white group-hover:text-primary transition-colors">Verify Serial Number</span>
+<span class="text-xs text-gray-500">Matches Work Order #891</span>
+</div>
+</label>
+<div class="h-px w-full bg-border-dark mx-auto w-[95%]"></div>
+<!-- Checkbox Item 2 -->
+<label class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 cursor-pointer transition-colors group">
+<div class="relative flex items-center">
+<input class="peer h-5 w-5 cursor-pointer appearance-none rounded border-2 border-gray-500 bg-transparent transition-all checked:border-primary checked:bg-primary hover:border-gray-400 focus:ring-0 focus:ring-offset-0" type="checkbox"/>
+<span class="material-symbols-outlined absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[16px] text-white opacity-0 peer-checked:opacity-100 pointer-events-none">check</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-white group-hover:text-primary transition-colors">Safety Lockout / Tagout</span>
+<span class="text-xs text-gray-500">Power disconnected &amp; tagged</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Odoo Integration / Info -->
+<div class="rounded-xl border border-dashed border-border-dark bg-transparent p-4 flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-500 text-sm">info</span>
+<span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Worksheet Ref</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-gray-400">Project</span>
+<span class="text-white font-medium">Maintenance 2024 - Q3</span>
+</div>
+</div>
+</div>
+<!-- Sticky Footer: Timer & Action -->
+<div class="fixed bottom-0 left-0 right-0 z-20 bg-background-dark/90 backdrop-blur-lg border-t border-border-dark p-6 pb-8">
+<div class="flex flex-col items-center gap-6 w-full max-w-md mx-auto">
+<!-- Timer Display -->
+<div class="flex flex-col items-center gap-1">
+<div class="font-mono text-5xl font-bold tracking-tight text-white tabular-nums">
+                        00:00:00
+                    </div>
+<span class="text-xs font-medium text-gray-500 uppercase tracking-widest">Duration</span>
+</div>
+<!-- Main Action Button -->
+<a href="../active_task_screen/code.html" class="group relative flex w-full items-center justify-between overflow-hidden rounded-full bg-primary p-1 pr-6 shadow-[0_0_20px_rgba(19,127,236,0.3)] transition-all hover:shadow-[0_0_30px_rgba(19,127,236,0.5)] active:scale-[0.98] no-underline">
+<!-- Button Icon Circle -->
+<div class="flex size-12 items-center justify-center rounded-full bg-white text-primary shadow-sm">
+<span class="material-symbols-outlined text-2xl">play_arrow</span>
+</div>
+<!-- Button Text -->
+<span class="flex-1 text-center text-lg font-bold text-white tracking-wide">Start Repair Task</span>
+<!-- Chevron indicator -->
+<span class="material-symbols-outlined text-white/50 group-hover:translate-x-1 transition-transform">chevron_right</span>
+</a>
+</div>
+</div>
+</div>
+<script src="../shared/nav.js"></script>
+</body></html>

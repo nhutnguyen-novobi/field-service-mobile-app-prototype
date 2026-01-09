@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Task List Screen</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "card-dark": "#1e293b", // Custom shade for cards to match shadcn dark theme feel
+                        "card-border": "rgba(255, 255, 255, 0.1)",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem", 
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem", 
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        /* Custom scrollbar hiding for clean UI */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased text-slate-900 dark:text-slate-50 overflow-hidden">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-hidden max-w-md mx-auto shadow-2xl bg-background-light dark:bg-background-dark border-x border-slate-200 dark:border-slate-800">
+<!-- Header Section -->
+<header class="sticky top-0 z-20 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 pb-2">
+<!-- Top App Bar -->
+<div class="flex items-center justify-between px-4 pt-4 pb-2">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 border-2 border-slate-200 dark:border-slate-700" data-alt="Profile picture of the technician" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB5bMnNXesKUe8LIG1TvlswvLVnBDJjy2_ihDy9MmFrVQGTTTEZSgHNqOeSyGuobvJsFVnZYII1ubv60u8__OksCzgBPJwWpou5-AicTdAD_nkHRWWcgEplw9kPo-MR0p1tpTUcdVW8nR298ot-7gpCO-GAD6EnMFA0VtafDwyiOwuaWj4Uf-4tLFIt3YMic_PI6kPmZqvXbaBRkbxHDEcfVbC8KQr6TXLLjuUqEQvd9qrht6s9_Mon1ozgBkbwoKH-eCEb1xUuyiY");'>
+</div>
+<div class="absolute bottom-0 right-0 size-3 bg-green-500 rounded-full border-2 border-background-light dark:border-background-dark"></div>
+</div>
+<div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight">My Tasks</h2>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium">Oct 24, Today</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<!-- Sync Status -->
+<div class="flex items-center justify-center size-8 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-[20px]">cloud_done</span>
+</div>
+<!-- Notifications -->
+<div class="flex items-center justify-center size-8 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400 relative">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<div class="absolute top-1 right-1.5 size-2 bg-red-500 rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Date Scroller -->
+<div class="mt-2 w-full overflow-x-auto hide-scrollbar pl-4 pb-2">
+<div class="flex gap-3 pr-4">
+<!-- Past Date -->
+<button class="flex flex-col items-center justify-center min-w-[3.5rem] h-14 rounded-xl bg-slate-200 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 border border-transparent">
+<span class="text-[10px] font-medium uppercase tracking-wide">Mon</span>
+<span class="text-base font-semibold">21</span>
+</button>
+<!-- Past Date -->
+<button class="flex flex-col items-center justify-center min-w-[3.5rem] h-14 rounded-xl bg-slate-200 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 border border-transparent">
+<span class="text-[10px] font-medium uppercase tracking-wide">Tue</span>
+<span class="text-base font-semibold">22</span>
+</button>
+<!-- Active Date (Today) -->
+<button class="flex flex-col items-center justify-center min-w-[3.5rem] h-14 rounded-xl bg-primary text-white shadow-lg shadow-primary/25 border border-primary">
+<span class="text-[10px] font-medium uppercase tracking-wide opacity-90">Wed</span>
+<span class="text-lg font-bold">23</span>
+</button>
+<!-- Future Date -->
+<button class="flex flex-col items-center justify-center min-w-[3.5rem] h-14 rounded-xl bg-slate-100 dark:bg-card-dark text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-card-border">
+<span class="text-[10px] font-medium uppercase tracking-wide">Thu</span>
+<span class="text-base font-semibold">24</span>
+</button>
+<!-- Future Date -->
+<button class="flex flex-col items-center justify-center min-w-[3.5rem] h-14 rounded-xl bg-slate-100 dark:bg-card-dark text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-card-border">
+<span class="text-[10px] font-medium uppercase tracking-wide">Fri</span>
+<span class="text-base font-semibold">25</span>
+</button>
+<!-- Future Date -->
+<button class="flex flex-col items-center justify-center min-w-[3.5rem] h-14 rounded-xl bg-slate-100 dark:bg-card-dark text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-card-border">
+<span class="text-[10px] font-medium uppercase tracking-wide">Sat</span>
+<span class="text-base font-semibold">26</span>
+</button>
+</div>
+</div>
+<!-- Search & Filter Bar -->
+<div class="px-4 mt-2 flex gap-3">
+<div class="relative flex-1">
+<div class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-slate-400">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="w-full h-10 pl-10 pr-4 rounded-lg bg-slate-100 dark:bg-card-dark border border-slate-200 dark:border-card-border text-slate-900 dark:text-white placeholder-slate-500 text-sm focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Search work orders..." type="text"/>
+</div>
+<button class="flex items-center justify-center h-10 px-4 rounded-lg bg-slate-100 dark:bg-card-dark border border-slate-200 dark:border-card-border text-slate-700 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors gap-2">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+<span class="text-sm font-medium hidden sm:block">Filter</span>
+</button>
+</div>
+</header>
+<!-- Main Content: Task List -->
+<main class="flex-1 overflow-y-auto px-4 py-4 space-y-4 pb-24">
+<!-- Section Header -->
+<div class="flex items-center justify-between mb-2">
+<h3 class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Scheduled (4)</h3>
+</div>
+<!-- Task Card 1: Active/In Progress -->
+<a href="../task_details_screen/code.html" class="block no-underline">
+<article class="group relative flex flex-col gap-3 p-4 rounded-xl bg-white dark:bg-card-dark border-l-4 border-l-primary border-y border-r border-slate-200 dark:border-y-card-border dark:border-r-card-border shadow-sm active:scale-[0.99] transition-transform duration-100 cursor-pointer">
+<div class="flex justify-between items-start">
+<div class="flex gap-3 items-center">
+<div class="flex items-center justify-center size-10 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400">
+<span class="material-symbols-outlined text-[24px]">ac_unit</span>
+</div>
+<div>
+<h4 class="text-base font-bold text-slate-900 dark:text-white leading-tight">AC Unit Maintenance</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-0.5">#WO-2024-001</p>
+</div>
+</div>
+<div class="flex items-center gap-1 px-2 py-1 rounded-full bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-900/30">
+<span class="material-symbols-outlined text-[14px] text-red-600 dark:text-red-400">priority_high</span>
+<span class="text-xs font-semibold text-red-600 dark:text-red-400">High</span>
+</div>
+</div>
+<div class="space-y-2 mt-1">
+<div class="flex items-start gap-2 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[18px] text-slate-400 shrink-0 mt-0.5">apartment</span>
+<span class="text-sm font-medium">Acme Corp HQ</span>
+</div>
+<div class="flex items-start gap-2 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[18px] text-slate-400 shrink-0 mt-0.5">location_on</span>
+<span class="text-sm">123 Industrial Way, Tech Park, Sector 4</span>
+</div>
+<div class="flex items-center gap-2 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[18px] text-slate-400 shrink-0">schedule</span>
+<span class="text-sm font-medium">09:00 AM - 11:00 AM</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-3 mt-1 border-t border-slate-100 dark:border-slate-800">
+<div class="flex gap-2">
+<span class="px-2.5 py-1 rounded-md bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-semibold border border-blue-200 dark:border-blue-800/50">In Progress</span>
+<span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium border border-slate-200 dark:border-slate-700">Repair</span>
+</div>
+<div class="flex items-center justify-center size-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</div>
+</div>
+</article>
+</a>
+<!-- Task Card 2: Scheduled -->
+<a href="../task_details_screen/code.html" class="block no-underline">
+<article class="group relative flex flex-col gap-3 p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border shadow-sm active:scale-[0.99] transition-transform duration-100 cursor-pointer">
+<div class="flex justify-between items-start">
+<div class="flex gap-3 items-center">
+<div class="flex items-center justify-center size-10 rounded-lg bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400">
+<span class="material-symbols-outlined text-[24px]">router</span>
+</div>
+<div>
+<h4 class="text-base font-bold text-slate-900 dark:text-white leading-tight">Router Installation</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-0.5">#WO-2024-004</p>
+</div>
+</div>
+</div>
+<div class="space-y-2 mt-1">
+<div class="flex items-start gap-2 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[18px] text-slate-400 shrink-0 mt-0.5">person</span>
+<span class="text-sm font-medium">John Doe</span>
+</div>
+<div class="flex items-start gap-2 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[18px] text-slate-400 shrink-0 mt-0.5">location_on</span>
+<span class="text-sm">45 Maple Avenue, Downtown</span>
+</div>
+<div class="flex items-center gap-2 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[18px] text-slate-400 shrink-0">schedule</span>
+<span class="text-sm font-medium">01:00 PM - 02:00 PM</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-3 mt-1 border-t border-slate-100 dark:border-slate-800">
+<div class="flex gap-2">
+<span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-semibold border border-slate-200 dark:border-slate-700">Scheduled</span>
+<span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium border border-slate-200 dark:border-slate-700">Install</span>
+</div>
+<div class="flex items-center justify-center size-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</div>
+</div>
+</article>
+</a>
+<!-- Task Card 3: Done -->
+<article class="group relative flex flex-col gap-3 p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border shadow-sm active:scale-[0.99] transition-transform duration-100 opacity-80">
+<div class="flex justify-between items-start">
+<div class="flex gap-3 items-center">
+<div class="flex items-center justify-center size-10 rounded-lg bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400">
+<span class="material-symbols-outlined text-[24px]">fact_check</span>
+</div>
+<div>
+<h4 class="text-base font-bold text-slate-900 dark:text-white leading-tight line-through decoration-slate-400">Site Survey</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-0.5">#WO-2024-002</p>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[20px] text-green-500">check_circle</span>
+</div>
+</div>
+<div class="space-y-2 mt-1">
+<div class="flex items-start gap-2 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[18px] text-slate-400 shrink-0 mt-0.5">apartment</span>
+<span class="text-sm font-medium">City Public Library</span>
+</div>
+<div class="flex items-center gap-2 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[18px] text-slate-400 shrink-0">schedule</span>
+<span class="text-sm font-medium">Completed at 10:45 AM</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-3 mt-1 border-t border-slate-100 dark:border-slate-800">
+<div class="flex gap-2">
+<span class="px-2.5 py-1 rounded-md bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-xs font-semibold border border-green-200 dark:border-green-800/50">Done</span>
+<span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium border border-slate-200 dark:border-slate-700">Survey</span>
+</div>
+</div>
+</article>
+<!-- Task Card 4: Scheduled (Low Priority) -->
+<a href="../task_details_screen/code.html" class="block no-underline">
+<article class="group relative flex flex-col gap-3 p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border shadow-sm active:scale-[0.99] transition-transform duration-100 cursor-pointer">
+<div class="flex justify-between items-start">
+<div class="flex gap-3 items-center">
+<div class="flex items-center justify-center size-10 rounded-lg bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400">
+<span class="material-symbols-outlined text-[24px]">plumbing</span>
+</div>
+<div>
+<h4 class="text-base font-bold text-slate-900 dark:text-white leading-tight">Leak Inspection</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-0.5">#WO-2024-009</p>
+</div>
+</div>
+<div class="flex items-center gap-1 px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+<span class="text-xs font-semibold text-slate-600 dark:text-slate-400">Low</span>
+</div>
+</div>
+<div class="space-y-2 mt-1">
+<div class="flex items-start gap-2 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[18px] text-slate-400 shrink-0 mt-0.5">person</span>
+<span class="text-sm font-medium">Sarah Miller</span>
+</div>
+<div class="flex items-start gap-2 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[18px] text-slate-400 shrink-0 mt-0.5">location_on</span>
+<span class="text-sm">789 Oak Lane, Residential District</span>
+</div>
+<div class="flex items-center gap-2 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[18px] text-slate-400 shrink-0">schedule</span>
+<span class="text-sm font-medium">04:00 PM - 04:30 PM</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-3 mt-1 border-t border-slate-100 dark:border-slate-800">
+<div class="flex gap-2">
+<span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-semibold border border-slate-200 dark:border-slate-700">Scheduled</span>
+<span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium border border-slate-200 dark:border-slate-700">Inspection</span>
+</div>
+<div class="flex items-center justify-center size-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</div>
+</div>
+</article>
+</a>
+</main>
+<!-- Floating Action Button -->
+<div class="absolute bottom-6 right-6 z-30">
+<a href="../submit_repair_request_screen/code.html" class="flex items-center justify-center size-14 rounded-full bg-primary text-white shadow-xl shadow-primary/40 hover:bg-blue-600 transition-colors active:scale-90">
+<span class="material-symbols-outlined text-[28px]">add</span>
+</a>
+</div>
+<!-- Background Gradient Overlay for aesthetics (optional) -->
+<div class="fixed inset-0 pointer-events-none z-0 opacity-20 dark:opacity-10 bg-gradient-to-br from-primary/10 via-transparent to-transparent"></div>
+</div>
+<script src="../shared/nav.js"></script>
+</body></html>

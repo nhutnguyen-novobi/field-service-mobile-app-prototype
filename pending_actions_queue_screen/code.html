@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pending Actions Queue</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "card-dark": "#1c252e", 
+                        "border-dark": "#2d3748",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for webkit to match dark theme */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3748;
+            border-radius: 3px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased min-h-screen flex flex-col overflow-x-hidden selection:bg-primary/30">
+<!-- Sticky Header -->
+<header class="sticky top-0 z-20 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 py-3 transition-colors duration-300">
+<div class="flex items-center justify-between h-12 max-w-lg mx-auto w-full">
+<h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Pending Queue</h1>
+<button class="group flex items-center gap-2 bg-primary hover:bg-primary/90 active:scale-95 active:bg-primary/80 transition-all text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-md shadow-primary/20">
+<span class="material-symbols-outlined text-[20px] group-active:animate-spin">sync</span>
+                Sync All
+            </button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col px-4 py-6 gap-6 max-w-lg mx-auto w-full">
+<!-- Stats Dashboard -->
+<div class="grid grid-cols-2 gap-4">
+<!-- Pending Stat Card -->
+<div class="flex flex-col justify-between p-5 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 shadow-sm transition-all duration-300 hover:shadow-md">
+<div class="flex items-center gap-2 text-primary mb-3">
+<span class="material-symbols-outlined text-[24px]">pending_actions</span>
+<span class="text-sm font-semibold text-slate-500 dark:text-slate-400">Pending</span>
+</div>
+<div>
+<p class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">5</p>
+<p class="text-xs font-medium text-slate-400 dark:text-slate-500 mt-1">Actions awaiting sync</p>
+</div>
+</div>
+<!-- Failure Stat Card -->
+<div class="flex flex-col justify-between p-5 rounded-xl bg-white dark:bg-card-dark border border-red-200 dark:border-red-900/30 shadow-sm relative overflow-hidden group cursor-pointer transition-all duration-300 hover:border-red-300 dark:hover:border-red-800 hover:shadow-md">
+<!-- Background decoration -->
+<div class="absolute -right-4 -top-4 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-[80px] text-red-500">error</span>
+</div>
+<div class="flex items-center gap-2 text-red-500 mb-3">
+<span class="material-symbols-outlined text-[24px] icon-filled">error</span>
+<span class="text-sm font-semibold text-red-600 dark:text-red-400">Failures</span>
+</div>
+<div>
+<p class="text-3xl font-bold tracking-tight text-red-600 dark:text-red-400">1</p>
+<p class="text-xs font-medium text-red-500/80 dark:text-red-400/60 mt-1">Requires attention</p>
+</div>
+</div>
+</div>
+<!-- Section: Requires Attention (Failed Items) -->
+<div class="flex flex-col gap-3 animate-in slide-in-from-bottom-2 fade-in duration-500">
+<div class="flex items-center justify-between px-1">
+<h3 class="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-[11px]">Requires Attention</h3>
+<span class="bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300 text-[10px] px-2 py-0.5 rounded-full font-bold border border-red-200 dark:border-red-800/50">1 ISSUE</span>
+</div>
+<!-- Failed List Item -->
+<div class="flex items-center gap-4 bg-white dark:bg-card-dark p-3 pr-4 rounded-xl border border-red-200 dark:border-red-900/40 shadow-sm hover:bg-slate-50 dark:hover:bg-[#252f3a] transition-colors cursor-pointer group active:scale-[0.99] duration-150">
+<div class="flex items-center justify-center shrink-0 w-12 h-12 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-100 dark:border-red-900/30">
+<span class="material-symbols-outlined text-[24px]">image</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0 justify-center">
+<p class="text-base font-semibold text-slate-900 dark:text-white truncate">Upload Inspection Image</p>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="flex h-1.5 w-1.5 rounded-full bg-red-500"></span>
+<p class="text-sm text-red-600 dark:text-red-400 truncate font-medium">Failed (Error 503)</p>
+<span class="text-slate-300 dark:text-slate-600">•</span>
+<p class="text-xs text-slate-400">15m ago</p>
+</div>
+</div>
+<div class="shrink-0 text-red-400 dark:text-red-500/70 group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors">
+<span class="material-symbols-outlined text-[24px]">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Section: In Queue (Pending Items) -->
+<div class="flex flex-col gap-3 animate-in slide-in-from-bottom-4 fade-in duration-700 fill-mode-backwards">
+<div class="flex items-center justify-between px-1">
+<h3 class="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-[11px]">In Queue</h3>
+</div>
+<!-- Queue Item 1 -->
+<div class="flex items-center gap-4 bg-white dark:bg-card-dark p-3 pr-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm hover:bg-slate-50 dark:hover:bg-[#252f3a] transition-colors cursor-pointer active:scale-[0.99] duration-150">
+<div class="flex items-center justify-center shrink-0 w-12 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700/50">
+<span class="material-symbols-outlined text-[24px]">build</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0 justify-center">
+<p class="text-base font-semibold text-slate-900 dark:text-white truncate">Task #4092 - Main Repair</p>
+<div class="flex items-center gap-1.5 mt-0.5">
+<p class="text-sm text-slate-500 dark:text-slate-400 truncate font-medium">Pending</p>
+<span class="text-slate-300 dark:text-slate-600">•</span>
+<p class="text-xs text-slate-400">2m ago</p>
+</div>
+</div>
+<div class="shrink-0 text-slate-400 dark:text-slate-600">
+<span class="material-symbols-outlined text-[20px]">cloud_queue</span>
+</div>
+</div>
+<!-- Queue Item 2 (Syncing State) -->
+<div class="relative flex items-center gap-4 bg-white dark:bg-card-dark p-3 pr-4 rounded-xl border border-primary/30 dark:border-primary/30 shadow-sm overflow-hidden active:scale-[0.99] duration-150 cursor-pointer">
+<!-- Syncing Progress Indicator (Subtle overlay) -->
+<div class="absolute bottom-0 left-0 h-[2px] bg-primary w-2/3 animate-pulse"></div>
+<div class="flex items-center justify-center shrink-0 w-12 h-12 rounded-lg bg-primary/10 text-primary border border-primary/20">
+<span class="material-symbols-outlined text-[24px]">edit_note</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0 justify-center">
+<p class="text-base font-semibold text-slate-900 dark:text-white truncate">Update Customer Notes</p>
+<div class="flex items-center gap-1.5 mt-0.5">
+<p class="text-sm text-primary font-medium truncate">Syncing...</p>
+</div>
+</div>
+<div class="shrink-0 text-primary animate-spin">
+<span class="material-symbols-outlined text-[20px]">sync</span>
+</div>
+</div>
+<!-- Queue Item 3 -->
+<div class="flex items-center gap-4 bg-white dark:bg-card-dark p-3 pr-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm hover:bg-slate-50 dark:hover:bg-[#252f3a] transition-colors cursor-pointer active:scale-[0.99] duration-150">
+<div class="flex items-center justify-center shrink-0 w-12 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700/50">
+<span class="material-symbols-outlined text-[24px]">inventory_2</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0 justify-center">
+<p class="text-base font-semibold text-slate-900 dark:text-white truncate">Stock Movement: #WH-002</p>
+<div class="flex items-center gap-1.5 mt-0.5">
+<p class="text-sm text-slate-500 dark:text-slate-400 truncate font-medium">Pending</p>
+<span class="text-slate-300 dark:text-slate-600">•</span>
+<p class="text-xs text-slate-400">45m ago</p>
+</div>
+</div>
+<div class="shrink-0 text-slate-400 dark:text-slate-600">
+<span class="material-symbols-outlined text-[20px]">cloud_queue</span>
+</div>
+</div>
+<!-- Queue Item 4 (Older) -->
+<div class="flex items-center gap-4 bg-white dark:bg-card-dark p-3 pr-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm hover:bg-slate-50 dark:hover:bg-[#252f3a] transition-colors cursor-pointer opacity-70 hover:opacity-100 active:scale-[0.99] duration-150">
+<div class="flex items-center justify-center shrink-0 w-12 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700/50">
+<span class="material-symbols-outlined text-[24px]">signature</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0 justify-center">
+<p class="text-base font-semibold text-slate-900 dark:text-white truncate">Service Sign-off</p>
+<div class="flex items-center gap-1.5 mt-0.5">
+<p class="text-sm text-slate-500 dark:text-slate-400 truncate font-medium">Pending</p>
+<span class="text-slate-300 dark:text-slate-600">•</span>
+<p class="text-xs text-slate-400">1h ago</p>
+</div>
+</div>
+<div class="shrink-0 text-slate-400 dark:text-slate-600">
+<span class="material-symbols-outlined text-[20px]">cloud_queue</span>
+</div>
+</div>
+</div>
+<div class="h-6"></div> <!-- Spacer -->
+</main>
+<!-- Footer Network Status -->
+<footer class="sticky bottom-0 bg-white/95 dark:bg-[#101922]/95 backdrop-blur border-t border-slate-200 dark:border-slate-800 px-6 py-3 flex items-center justify-between text-xs font-medium text-slate-500 dark:text-slate-400 z-20">
+<div class="flex items-center gap-2.5">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500 border border-white dark:border-[#101922]"></span>
+</span>
+<span class="font-semibold text-slate-700 dark:text-slate-300">Connected to 5G</span>
+</div>
+<div class="flex items-center gap-1.5 opacity-80">
+<span class="material-symbols-outlined text-[14px]">history</span>
+<span>Last synced: 2m ago</span>
+</div>
+</footer>
+<script src="../shared/nav.js"></script>
+</body></html>

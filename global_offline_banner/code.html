@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Field Service - Offline Mode</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#1c2127",
+                        "surface-highlight": "#283039",
+                        "warning": "#f59e0b",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem", 
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem", 
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hiding for cleaner mobile look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased selection:bg-primary/30">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-hidden max-w-md mx-auto shadow-2xl">
+<!-- Top App Bar -->
+<header class="flex items-center bg-background-light dark:bg-background-dark px-4 py-3 justify-between z-20 sticky top-0 border-b border-gray-200 dark:border-surface-highlight">
+<div class="flex items-center gap-3">
+<button class="text-slate-900 dark:text-white flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-surface-highlight transition-colors">
+<span class="material-symbols-outlined text-[24px]">menu</span>
+</button>
+</div>
+<h1 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight flex-1 text-center">Field Service</h1>
+<div class="flex items-center justify-end gap-2">
+<button class="flex size-10 items-center justify-center rounded-full overflow-hidden border border-gray-200 dark:border-surface-highlight">
+<img alt="Portrait of a field technician smiling" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6er7iXBSO04xMSQ3y9IJYagaqhF75r2o8N_iyTomQo6o_CFSGe-9TFj_YpmGvz868U3BCc0fGlgUSgx5Sska5LrqPeNNsGpqxiCpIyoWWe5r-NmosBu81CeGxkfrDbF_sPRa37_MABNoyxoCzefe1Ut6NO7kOAeLRiGgy6N-_MTLBzq51SV0zTnqKqMHWvHLcYjId11sRlwH8AgI3Bc5Anu-egQdInbcwTNbdKjdM9UbXdD3ElshdIJuFidKx44sAzu7ClqeluQM"/>
+</button>
+</div>
+</header>
+<!-- Global Offline Banner -->
+<!-- Placed immediately under the header for high visibility but scrolling with content to be non-intrusive during deep work -->
+<div class="bg-[#1e293b] dark:bg-[#1e293b] px-4 py-3 shadow-md z-10 border-l-4 border-warning relative">
+<div class="flex items-center justify-between gap-3">
+<div class="flex items-start gap-3 flex-1">
+<div class="flex items-center justify-center rounded-full bg-surface-highlight p-2 shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-warning text-[20px]">cloud_off</span>
+</div>
+<div class="flex flex-col justify-center gap-0.5">
+<p class="text-white text-sm font-semibold leading-tight">You are currently offline</p>
+<p class="text-slate-400 text-xs font-medium leading-normal">3 tasks pending sync. Changes saved locally.</p>
+</div>
+</div>
+<div class="shrink-0 flex items-center gap-2">
+<button class="flex items-center justify-center rounded-lg h-8 px-3 bg-primary hover:bg-blue-600 active:bg-blue-700 text-white text-xs font-bold transition-colors">
+                        Sync Now
+                    </button>
+<!-- Close button for dismissal -->
+<button class="text-slate-400 hover:text-white p-1">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Scrollable Content Area -->
+<main class="flex-1 overflow-y-auto no-scrollbar pb-20 p-4 flex flex-col gap-5">
+<!-- Quick Stats Section -->
+<section>
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-slate-900 dark:text-white text-base font-bold">Today's Overview</h3>
+<span class="text-xs font-medium text-slate-500 dark:text-slate-400">Oct 24, 2023</span>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-white dark:bg-surface-dark p-3 rounded-xl shadow-sm border border-gray-100 dark:border-surface-highlight flex flex-col gap-2">
+<span class="material-symbols-outlined text-primary text-[24px]">assignment_turned_in</span>
+<div>
+<p class="text-2xl font-bold text-slate-900 dark:text-white">5</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Completed</p>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark p-3 rounded-xl shadow-sm border border-gray-100 dark:border-surface-highlight flex flex-col gap-2">
+<span class="material-symbols-outlined text-warning text-[24px]">pending_actions</span>
+<div>
+<p class="text-2xl font-bold text-slate-900 dark:text-white">3</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Pending Sync</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Pending Tasks Section -->
+<section class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<h3 class="text-slate-900 dark:text-white text-base font-bold">Upcoming Tasks</h3>
+</div>
+<!-- Card 1: Pending Sync -->
+<div class="flex flex-col rounded-xl bg-white dark:bg-surface-dark shadow-sm border border-gray-100 dark:border-surface-highlight overflow-hidden relative group">
+<!-- Local save indicator badge -->
+<div class="absolute top-3 right-3 flex items-center gap-1 bg-surface-highlight/80 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] font-medium text-slate-300 z-10">
+<span class="material-symbols-outlined text-[12px] text-warning">cloud_queue</span>
+<span>Not Synced</span>
+</div>
+<div class="h-32 w-full bg-cover bg-center" data-alt="Industrial HVAC unit on a rooftop with blue sky" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB82wX7bLhco_6zmMcxXpTJrjHAsKnbUazVAr7Rk1EgOG6Wn5CrY7faQzamZaBwcrdxtOrmwOoTGWDjTi5ZmC5O_CEMpkmT6dHoEmynJv2KTrA-E49n9hhUO2XpbqIiciW3yRCVuKnfQEHVdCDmG5GcQiLPgKiJl-9opm1LeJZ-qH_eMDTbVmga6r3U2I8UaEOJUtDJsA5Sa7pJecHFfB656oO4TywSV6cL5U7SSgT0SqDlX4q-mlFy0GLYtUW7YoyZ5zY1jYJ87nY");'>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<p class="text-slate-900 dark:text-white text-base font-bold leading-tight">Repair Task #8291</p>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal">HVAC Maintenance • 10:00 AM</p>
+<div class="flex items-center gap-1 mt-1 text-slate-400 text-xs">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+<span>4521 Main St, Springfield</span>
+</div>
+</div>
+<div class="flex items-center gap-3 pt-2 border-t border-gray-100 dark:border-surface-highlight">
+<button class="flex-1 flex items-center justify-center rounded-lg h-9 bg-primary text-white text-sm font-medium hover:bg-blue-600 transition-colors">
+<span class="material-symbols-outlined text-[18px] mr-2">play_circle</span>
+                                Resume
+                            </button>
+<button class="flex items-center justify-center rounded-lg size-9 bg-gray-100 dark:bg-surface-highlight text-slate-900 dark:text-white hover:bg-gray-200 dark:hover:bg-[#343e49] transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2: Normal -->
+<div class="flex flex-col rounded-xl bg-white dark:bg-surface-dark shadow-sm border border-gray-100 dark:border-surface-highlight overflow-hidden relative">
+<div class="h-32 w-full bg-cover bg-center" data-alt="Solar panels installed on a modern residential roof" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBjhmzASxYDnSfDzKc_apHY7ktqbMPhc-zx6iHfJUGKjWoY0hp23z0IZ3XXO62Iv_OZt9rUtUhYBCs-9sILpM9AnRiokoChTVO_gO_EY2zqAtoR0qUNfn6W-3p8ZsLaocqJD_nlq5ejP-hDqfeNRBTnV65NUTyK2PCj1ZO5BghidjxMVh_cs6LlikEby4Pca9FIubGYo8rSV6LoMsBKEORHU54JIcc3V9QVqFQ-CpflsU4fBIFUYhkwwjtYh4H_vp71bnvAF8yassQ");'>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div class="flex flex-col gap-1">
+<p class="text-slate-900 dark:text-white text-base font-bold leading-tight">Installation #8292</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal">Solar Panel Setup • 2:00 PM</p>
+<div class="flex items-center gap-1 mt-1 text-slate-400 text-xs">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+<span>882 Oak Avenue, Westview</span>
+</div>
+</div>
+<div class="flex items-center gap-3 pt-2 border-t border-gray-100 dark:border-surface-highlight">
+<button class="flex-1 flex items-center justify-center rounded-lg h-9 bg-gray-100 dark:bg-surface-highlight text-slate-900 dark:text-white text-sm font-medium hover:bg-gray-200 dark:hover:bg-[#343e49] transition-colors">
+<span class="material-symbols-outlined text-[18px] mr-2">visibility</span>
+                                View Details
+                            </button>
+</div>
+</div>
+</div>
+<!-- Card 3: Normal -->
+<div class="flex flex-col rounded-xl bg-white dark:bg-surface-dark shadow-sm border border-gray-100 dark:border-surface-highlight overflow-hidden relative opacity-70">
+<div class="h-32 w-full bg-cover bg-center grayscale" data-alt="Close up of electrical wires and multimeter tool" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_F87SDj7NXDD_H8JGBfltWfXo9QgX-QCZ5KLqRNiS1TnJkCrjR7bzXISd7A_Awz6wpTcq4Km8Y7JNQRiNiSp07ezW3MyuypVfubSswCg-r841hHgDhgor6Lak9RnZKh5xTATbnA0VavDBEzBEOiuRZYo1K7_4E6xbFn0JxCi8yAR2p2Fp--7wtVaCokyODmjoI6kSjlmV86RdSwgFQdFrpvp9hsCePi01sytpfL_HxISrMGFUEAsLEYz9tOezqapH220IibmMyaM");'>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div class="flex flex-col gap-1">
+<p class="text-slate-900 dark:text-white text-base font-bold leading-tight">Inspection #9921</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal">Annual Safety Check • 4:30 PM</p>
+</div>
+<div class="flex items-center gap-1 bg-surface-highlight/30 w-fit px-2 py-1 rounded text-xs text-slate-400">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>Locked until start</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation -->
+<nav class="flex gap-2 border-t border-gray-200 dark:border-surface-highlight bg-white dark:bg-surface-dark px-4 pb-safe pt-2 absolute bottom-0 w-full shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] z-30">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 pb-4 pt-2 text-primary" href="#">
+<span class="material-symbols-outlined text-[24px] font-variation-settings-'FILL'1">task</span>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Tasks</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 pb-4 pt-2 text-slate-400 hover:text-slate-500 dark:hover:text-slate-300" href="#">
+<span class="material-symbols-outlined text-[24px]">map</span>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Map</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 pb-4 pt-2 text-slate-400 hover:text-slate-500 dark:hover:text-slate-300" href="#">
+<span class="material-symbols-outlined text-[24px]">inventory_2</span>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Parts</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 pb-4 pt-2 text-slate-400 hover:text-slate-500 dark:hover:text-slate-300" href="#">
+<span class="material-symbols-outlined text-[24px]">person</span>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Profile</p>
+</a>
+</nav>
+<!-- Safe Area Spacer for bottom nav visualization -->
+<div class="h-[80px]"></div>
+</div>
+<script src="../shared/nav.js"></script>
+</body></html>

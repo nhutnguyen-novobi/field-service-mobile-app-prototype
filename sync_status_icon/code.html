@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Field Service Sync Status</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922", // Matching the provided dark theme background
+                        "surface-dark": "#111418", // Darker surface for cards/header
+                        "surface-border": "#22303e", // Border color for dark theme
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom spinner animation */
+        @keyframes spin-slow {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .animate-spin-slow {
+            animation: spin-slow 2s linear infinite;
+        }
+        /* Mobile-first specific height adjustments */
+        body {
+            overscroll-behavior-y: none; /* Prevent rubber-banding on iOS */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white min-h-screen flex flex-col overflow-hidden">
+<!-- Top App Bar with Sync Status -->
+<header class="flex-none bg-surface-dark border-b border-surface-border sticky top-0 z-50 pt-safe-top">
+<div class="flex items-center justify-between px-4 py-3">
+<h1 class="text-lg font-bold tracking-tight text-white">My Tasks</h1>
+<!-- Sync Status Button Area -->
+<div class="flex items-center gap-3">
+<!-- Status Badge/Icon: Using a button for interactivity -->
+<button aria-label="Sync Status: Synced" class="group relative flex h-10 w-10 items-center justify-center rounded-lg bg-[#283039] hover:bg-[#323b46] transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50">
+<!-- Status Indicator Dot -->
+<span class="absolute right-2 top-2 h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.4)]"></span>
+<!-- Icon -->
+<span class="material-symbols-outlined text-white text-[24px]">cloud_done</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content: Task List -->
+<main class="flex-1 overflow-y-auto pb-24">
+<div class="flex flex-col gap-px bg-surface-border"> <!-- Gap provides distinct separators -->
+<!-- List Item 1 -->
+<div class="relative flex items-center justify-between bg-surface-dark px-4 py-4 active:bg-[#1a2128]">
+<div class="flex items-center gap-4">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#283039] text-primary">
+<span class="material-symbols-outlined text-[24px]">build</span>
+</div>
+<div class="flex flex-col">
+<p class="text-base font-medium text-white line-clamp-1">Repair HVAC Unit #42</p>
+<p class="text-sm text-slate-400 line-clamp-1">123 Industrial Park • Priority: High</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-500 text-[20px]">chevron_right</span>
+</div>
+<!-- List Item 2 -->
+<div class="relative flex items-center justify-between bg-surface-dark px-4 py-4 active:bg-[#1a2128]">
+<div class="flex items-center gap-4">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#283039] text-primary">
+<span class="material-symbols-outlined text-[24px]">verified_user</span>
+</div>
+<div class="flex flex-col">
+<p class="text-base font-medium text-white line-clamp-1">Safety Inspection</p>
+<p class="text-sm text-slate-400 line-clamp-1">Site B Generator • Due Today</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-500 text-[20px]">chevron_right</span>
+</div>
+<!-- List Item 3 -->
+<div class="relative flex items-center justify-between bg-surface-dark px-4 py-4 active:bg-[#1a2128]">
+<div class="flex items-center gap-4">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#283039] text-primary">
+<span class="material-symbols-outlined text-[24px]">router</span>
+</div>
+<div class="flex flex-col">
+<p class="text-base font-medium text-white line-clamp-1">Network Install</p>
+<p class="text-sm text-slate-400 line-clamp-1">Downtown Office • Pending Sync</p>
+</div>
+</div>
+<!-- Local unsynced indicator inside list item -->
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-amber-500 text-[18px]" title="Pending Upload">cloud_off</span>
+<span class="material-symbols-outlined text-slate-500 text-[20px]">chevron_right</span>
+</div>
+</div>
+<!-- List Item 4 -->
+<div class="relative flex items-center justify-between bg-surface-dark px-4 py-4 active:bg-[#1a2128]">
+<div class="flex items-center gap-4">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#283039] text-primary">
+<span class="material-symbols-outlined text-[24px]">inventory_2</span>
+</div>
+<div class="flex flex-col">
+<p class="text-base font-medium text-white line-clamp-1">Part Replacement</p>
+<p class="text-sm text-slate-400 line-clamp-1">Warehouse A • Low Priority</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-500 text-[20px]">chevron_right</span>
+</div>
+<!-- List Item 5 -->
+<div class="relative flex items-center justify-between bg-surface-dark px-4 py-4 active:bg-[#1a2128]">
+<div class="flex items-center gap-4">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#283039] text-primary">
+<span class="material-symbols-outlined text-[24px]">electric_bolt</span>
+</div>
+<div class="flex flex-col">
+<p class="text-base font-medium text-white line-clamp-1">Emergency Check</p>
+<p class="text-sm text-slate-400 line-clamp-1">Main Grid • Urgent</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-500 text-[20px]">chevron_right</span>
+</div>
+</div>
+</main>
+<!-- Bottom Sheet / Action Panel (Simulating "Open" State) -->
+<!-- This overlay represents the modal that appears when tapping the sync icon -->
+<div class="absolute inset-0 z-50 flex flex-col justify-end bg-black/60 backdrop-blur-sm">
+<!-- Bottom Sheet Content -->
+<div class="w-full bg-surface-dark rounded-t-xl border-t border-surface-border shadow-2xl animate-in slide-in-from-bottom duration-300">
+<!-- Handle -->
+<div class="flex w-full items-center justify-center pt-3 pb-1">
+<div class="h-1 w-12 rounded-full bg-slate-600"></div>
+</div>
+<!-- Header -->
+<div class="px-5 pt-2 pb-4 border-b border-surface-border flex items-center justify-between">
+<div>
+<h3 class="text-white text-lg font-semibold">Synchronization Status</h3>
+<p class="text-slate-400 text-sm">Odoo Backend • Production</p>
+</div>
+<span class="material-symbols-outlined text-emerald-500 text-[28px]">cloud_done</span>
+</div>
+<!-- Status Details -->
+<div class="p-5 space-y-4">
+<!-- Status Row -->
+<div class="flex items-start gap-3">
+<div class="mt-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/10">
+<span class="material-symbols-outlined text-emerald-500 text-[14px]">check</span>
+</div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-medium">All systems operational</span>
+<span class="text-slate-400 text-xs">Data is synchronized across all devices.</span>
+</div>
+</div>
+<!-- Last Sync Time -->
+<div class="flex items-start gap-3">
+<div class="mt-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-slate-700/50">
+<span class="material-symbols-outlined text-slate-400 text-[14px]">schedule</span>
+</div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-medium">Last successful sync</span>
+<span class="text-slate-400 text-xs">Today, 10:42 AM</span>
+</div>
+</div>
+<!-- Pending Items (Zero state here, but visually prepped) -->
+<div class="flex items-start gap-3">
+<div class="mt-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-slate-700/50">
+<span class="material-symbols-outlined text-slate-400 text-[14px]">pending_actions</span>
+</div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-medium">Pending items</span>
+<span class="text-slate-400 text-xs">0 items waiting for upload</span>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="p-5 pt-2 pb-8">
+<button class="flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-3 px-4 text-sm font-semibold text-white shadow-lg active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined text-[20px] animate-spin-slow" style="display:none;">sync</span> <!-- Hidden spinner for active state -->
+<span class="material-symbols-outlined text-[20px]">sync</span>
+                    Sync Now
+                </button>
+<button class="mt-3 flex w-full items-center justify-center gap-2 rounded-lg bg-transparent py-3 px-4 text-sm font-medium text-slate-400 hover:text-white transition-colors">
+                    View Sync Logs
+                </button>
+</div>
+</div>
+</div>
+<script src="../shared/nav.js"></script>
+</body></html>

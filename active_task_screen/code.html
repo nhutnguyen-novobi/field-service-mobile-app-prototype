@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Active Task Screen</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "primary-dark": "#0f65bd",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#1c242d",
+                        "surface-light": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["Space Mono", "monospace"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem", 
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem", 
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased selection:bg-primary selection:text-white">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden pb-24">
+<!-- Header -->
+<header class="flex items-center justify-between px-4 py-3 bg-background-light dark:bg-background-dark sticky top-0 z-10">
+<a href="../task_details_screen/code.html" class="flex size-10 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-slate-900 dark:text-white">arrow_back</span>
+</a>
+<div class="flex flex-col items-center">
+<span class="text-sm font-semibold tracking-wide text-slate-900 dark:text-white">#TASK-2049</span>
+</div>
+<div class="flex size-10 items-center justify-center">
+<span class="material-symbols-outlined text-green-500" title="Online">wifi</span>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex flex-col gap-6 px-4 pt-2">
+<!-- Task Info -->
+<div class="flex flex-col items-center gap-1 text-center">
+<h1 class="text-2xl font-bold leading-tight text-slate-900 dark:text-white">HVAC Repair</h1>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Acme Corp HQ • Main Server Room</p>
+</div>
+<!-- Timer Hero -->
+<div class="flex flex-col items-center justify-center py-6">
+<div class="flex items-end gap-2 sm:gap-4">
+<!-- Hours -->
+<div class="flex flex-col items-center gap-2">
+<div class="flex h-20 w-16 sm:h-24 sm:w-20 items-center justify-center rounded-xl bg-surface-light dark:bg-surface-dark shadow-sm border border-slate-200 dark:border-slate-800">
+<span class="font-mono text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white">01</span>
+</div>
+<span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Hrs</span>
+</div>
+<span class="mb-8 text-2xl font-bold text-slate-300 dark:text-slate-600">:</span>
+<!-- Minutes -->
+<div class="flex flex-col items-center gap-2">
+<div class="flex h-20 w-16 sm:h-24 sm:w-20 items-center justify-center rounded-xl bg-surface-light dark:bg-surface-dark shadow-sm border border-slate-200 dark:border-slate-800 relative overflow-hidden group">
+<!-- Subtle glow effect for active timer segment -->
+<div class="absolute inset-0 bg-primary/5 dark:bg-primary/10"></div>
+<span class="font-mono text-4xl sm:text-5xl font-bold text-primary">24</span>
+</div>
+<span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Min</span>
+</div>
+<span class="mb-8 text-2xl font-bold text-slate-300 dark:text-slate-600">:</span>
+<!-- Seconds -->
+<div class="flex flex-col items-center gap-2">
+<div class="flex h-20 w-16 sm:h-24 sm:w-20 items-center justify-center rounded-xl bg-surface-light dark:bg-surface-dark shadow-sm border border-slate-200 dark:border-slate-800">
+<span class="font-mono text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white">15</span>
+</div>
+<span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Sec</span>
+</div>
+</div>
+<!-- Status Badge -->
+<div class="mt-6 flex items-center gap-2 rounded-full bg-green-500/10 px-3 py-1 text-green-600 dark:text-green-400">
+<span class="relative flex size-2">
+<span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+<span class="relative inline-flex size-2 rounded-full bg-green-500"></span>
+</span>
+<span class="text-xs font-bold uppercase tracking-wide">Tracking Time</span>
+</div>
+</div>
+<!-- Primary Actions -->
+<div class="grid grid-cols-2 gap-3">
+<a href="../paused_task_screen/code.html" class="flex h-12 items-center justify-center gap-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-surface-light dark:bg-surface-dark px-4 text-sm font-bold text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors active:scale-95 no-underline">
+<span class="material-symbols-outlined">pause</span>
+                    Pause
+                </a>
+<a href="../upload_repair_images_screen/code.html" class="flex h-12 items-center justify-center gap-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-surface-light dark:bg-surface-dark px-4 text-sm font-bold text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors active:scale-95 no-underline">
+<span class="material-symbols-outlined">add_a_photo</span>
+                    Add Proof
+                </a>
+</div>
+<!-- Mandatory Requirements Card -->
+<div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-surface-light dark:bg-surface-dark p-0 overflow-hidden shadow-sm">
+<div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 px-4 py-3 bg-slate-50/50 dark:bg-slate-900/50">
+<h3 class="text-sm font-bold text-slate-900 dark:text-white">Requirements Pending</h3>
+<span class="rounded bg-orange-500/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-orange-600 dark:text-orange-400">2 Remaining</span>
+</div>
+<div class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Completed Item -->
+<div class="flex items-center gap-3 px-4 py-3 opacity-50">
+<span class="material-symbols-outlined text-green-500 icon-filled">check_circle</span>
+<div class="flex-1">
+<p class="text-sm font-medium text-slate-900 dark:text-white line-through decoration-slate-500">Safety Check</p>
+</div>
+</div>
+<!-- Pending Checklist Item -->
+<button class="flex w-full items-center gap-3 px-4 py-3 text-left hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group">
+<div class="flex size-6 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 dark:border-slate-600 group-hover:border-primary transition-colors">
+<span class="block size-2.5 rounded-full bg-transparent group-hover:bg-primary transition-colors"></span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-medium text-slate-900 dark:text-white group-hover:text-primary transition-colors">Replace Filter</p>
+<p class="text-xs text-slate-500">Unit A-14 HEPA Filter</p>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-lg">chevron_right</span>
+</button>
+<!-- Pending Photo Item -->
+<button class="flex w-full items-center gap-3 px-4 py-3 text-left hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group bg-red-500/5 dark:bg-red-500/5">
+<div class="flex size-6 shrink-0 items-center justify-center rounded-full bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400">
+<span class="material-symbols-outlined text-[16px]">priority_high</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-medium text-slate-900 dark:text-white group-hover:text-red-500 transition-colors">Mandatory Photo</p>
+<p class="text-xs text-red-500 dark:text-red-400">Proof of installation required</p>
+</div>
+<div class="h-10 w-14 rounded overflow-hidden bg-slate-200 dark:bg-slate-700 relative">
+<img alt="Equipment placeholder" class="h-full w-full object-cover opacity-50" data-alt="Blurred background representing an equipment part" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYd9g-ovnWQ-H0DPjaKWtVUIQ7lI9Sx_yDo28xljKHKGaF9fqov--kyNWceqig4j7lJVcpUsWXwPtsWBYDQrVnUaaW1Shd64nXFmLhvRoMljT_FY20tv7r6kl33mCeUmNgE9inrsTaX6czKBJyyyOwIe6q8x6eLefKLtWy0rlsIZI43-fqIe0v3mGsrigP11sOjNC4luBBvNfobWB7smyxa7s7C_RnQMqrJJnU_Nx_o3fFjYf5RYVjOwH9i_D46p-d4lMj3sAJIOE"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-lg drop-shadow-md">photo_camera</span>
+</div>
+</div>
+</button>
+</div>
+</div>
+<!-- Map Preview (Context) -->
+<div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-surface-light dark:bg-surface-dark overflow-hidden shadow-sm h-32 relative">
+<img alt="Map location" class="h-full w-full object-cover opacity-60 dark:opacity-40" data-alt="Map showing city streets and location marker" data-location="New York City" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABMExKxOKF_-Ld1dFAVkmaKJZpbgqp6NrCxE3o7CS1_lCBuRayHGYmSGHkdfcJmGZndydvW97lqaSmYj5LQpJ4R_FI9QDCkEzPmhEifZn_dKXp2MKexRXlBcndtQwqMtFTMV8wEEl9lHFOkTxeLqUO4wA_GxZsPrWsy8zE6-2hYyoRhg-c4_JQs8k5uoGdO-2liyTwjhjcUNn014VOqR9FZa44W4yia053yHypsnzB7mlPy42qemkKOc2xPgnjsLIzv2ybaflBPyM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent p-4 flex flex-col justify-end">
+<div class="flex items-center gap-2 text-white">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span class="text-xs font-medium">123 Industrial Ave, Sector 4</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Sticky Footer -->
+<div class="fixed bottom-0 left-0 right-0 p-4 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 z-20">
+<a href="../complete_repair_task_screen/code.html" class="relative w-full overflow-hidden rounded-lg bg-primary p-[1px] group block no-underline">
+<div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+<div class="relative flex h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 text-white">
+<span class="material-symbols-outlined text-xl">check_circle</span>
+<span class="text-base font-bold">Complete Task</span>
+</div>
+</a>
+<div class="mt-2 text-center">
+<p class="text-[10px] text-slate-400">All data will be synced automatically when online</p>
+</div>
+</div>
+</div>
+<script src="../shared/nav.js"></script>
+</body></html>

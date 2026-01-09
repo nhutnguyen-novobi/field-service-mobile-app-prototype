@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Repair Tickets</title>
+<!-- Fonts and Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "card-dark": "#18212a", // Slightly lighter than background-dark
+                        "border-dark": "#2a3441",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "md": "0.375rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom Scrollbar for clean look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased overflow-hidden">
+<div class="relative flex h-full max-h-screen w-full flex-col overflow-hidden">
+<!-- Header -->
+<header class="flex items-center justify-between px-4 py-3 bg-background-light dark:bg-background-dark z-10">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 border border-slate-200 dark:border-border-dark" data-alt="User profile avatar of a field technician" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBPedLJBHn8ZsnT8Ip1GD4HTiRjKHLzslVVLbYCWNDFInaSWReQEbuyE4JaHlmWUMinxRmouInYY51nO9BWU4511Tcb1Pt44DF97hcgBwGN1pg-JzuN-JD6zaGZWLNlo6SXnIjPquBmwLnQPFvTR1P9Nu3V2B2o6oeJlqfd3zxmpoEQ6GTxyqRdEH7BUQEdG400PtNXJbk5VIIqe8dKNq2Ko7zlEdYp2maAD9h-6XlNbUTfDaxNXWXE9PfLhCYZEEqcsPZzpxf32Zw");'>
+</div>
+<!-- Online Status Dot -->
+<span class="absolute bottom-0 right-0 size-3 rounded-full bg-emerald-500 border-2 border-background-light dark:border-background-dark"></span>
+</div>
+<h1 class="text-xl font-bold tracking-tight">My Repairs</h1>
+</div>
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-slate-200 dark:hover:bg-card-dark transition-colors text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</header>
+<!-- Main Content Scrollable Area -->
+<main class="flex-1 overflow-y-auto no-scrollbar pb-24">
+<!-- View Toggle (Segmented Control) -->
+<div class="px-4 pb-4">
+<div class="flex p-1 rounded-xl bg-slate-200 dark:bg-card-dark border border-transparent dark:border-border-dark">
+<button class="flex-1 py-2 rounded-lg text-sm font-semibold shadow-sm bg-white dark:bg-primary text-slate-900 dark:text-white transition-all">
+                        List
+                    </button>
+<button class="flex-1 py-2 rounded-lg text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all">
+                        Map
+                    </button>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="px-4 pb-4 sticky top-0 z-10 bg-background-light dark:bg-background-dark/95 backdrop-blur-sm">
+<div class="relative">
+<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-3 rounded-xl border-none bg-slate-200 dark:bg-card-dark placeholder-slate-500 dark:placeholder-slate-500 text-sm focus:ring-2 focus:ring-primary dark:text-white transition-shadow" placeholder="Search tickets, customers, or serial #..." type="text"/>
+</div>
+</div>
+<!-- Ticket List -->
+<div class="flex flex-col gap-4 px-4">
+<!-- Card 1: High Priority -->
+<a href="../repair_ticket_details_screen/code.html" class="block no-underline">
+<article class="group relative flex flex-col gap-3 p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark shadow-sm active:scale-[0.98] transition-transform duration-100 cursor-pointer">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded">#REP-0042</span>
+<!-- Sync Status Icon (Offline First indicator) -->
+<span class="material-symbols-outlined text-[16px] text-slate-400" title="Synced">cloud_done</span>
+</div>
+<span class="flex items-center gap-1 text-xs font-semibold text-orange-600 bg-orange-500/10 px-2 py-1 rounded-full border border-orange-500/20">
+                            Pending
+                        </span>
+</div>
+<div class="flex gap-4">
+<div class="flex-1">
+<h3 class="text-base font-bold text-slate-900 dark:text-white mb-1">Acme Corp HQ</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 leading-snug">123 Industrial Way, Sector 4<br/>Main Server Room</p>
+</div>
+<!-- Thumbnail/Type Indicator -->
+<div class="size-16 rounded-lg bg-slate-100 dark:bg-background-dark flex items-center justify-center shrink-0 border border-slate-200 dark:border-border-dark">
+<span class="material-symbols-outlined text-slate-400 text-[24px]">dns</span>
+</div>
+</div>
+<div class="h-px w-full bg-slate-100 dark:bg-border-dark my-1"></div>
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-1.5 text-red-500 dark:text-red-400 font-medium">
+<span class="material-symbols-outlined text-[18px]">priority_high</span>
+                            High Priority
+                        </div>
+<div class="flex items-center gap-1.5 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+                            Due Today, 4:00 PM
+                        </div>
+</div>
+</article>
+</a>
+<!-- Card 2: In Progress -->
+<a href="../repair_ticket_details_screen/code.html" class="block no-underline">
+<article class="group relative flex flex-col gap-3 p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark shadow-sm active:scale-[0.98] transition-transform duration-100 cursor-pointer">
+<!-- Left colored border for quick status identification -->
+<div class="absolute left-0 top-4 bottom-4 w-1 bg-primary rounded-r-full"></div>
+<div class="flex items-center justify-between pl-3">
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold text-slate-500 dark:text-slate-400">#REP-0045</span>
+</div>
+<span class="flex items-center gap-1 text-xs font-semibold text-primary bg-primary/10 px-2 py-1 rounded-full border border-primary/20">
+                            In Progress
+                        </span>
+</div>
+<div class="flex gap-4 pl-3">
+<div class="flex-1">
+<h3 class="text-base font-bold text-slate-900 dark:text-white mb-1">John Doe Residence</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 leading-snug">45 Maple Drive, Apt 2B</p>
+</div>
+<div class="size-16 rounded-lg bg-center bg-cover shrink-0 border border-slate-200 dark:border-border-dark" data-alt="Close up of an electronic circuit board" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDw0z1dLxsdC001Q5bD7iOP4fwTJds4XP_ydpDzYWopvPsmPQR9T2DY3-olYxKnvTAtGhfcNVNDjpRyK377AZS5CxrpepRjaaqJMbfpmj0ThA1zMerBn_HFz6Fybi2MVE7F1YzS1Kvp6TdyKfiyw7OcqfOY5p0oGO8bj2abt98I9yGJOIg47cSHiLR-v0v7GDjUihBAtoi9dZbP-65O1gIVufgyo73GdcsD7d34AW0crwEG5dyiwQ6P9aG4-Nz4mHswLUppCqo8Ht0");'>
+</div>
+</div>
+<div class="h-px w-full bg-slate-100 dark:bg-border-dark my-1 pl-3"></div>
+<div class="flex items-center justify-between text-xs pl-3">
+<div class="flex items-center gap-1.5 text-blue-500 dark:text-blue-400 font-medium">
+<span class="material-symbols-outlined text-[18px]">signal_cellular_alt</span>
+                            Normal Priority
+                        </div>
+<div class="flex items-center gap-1.5 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+                            Started 2h ago
+                        </div>
+</div>
+</article>
+</a>
+<!-- Card 3: Scheduled (Low Priority) -->
+<article class="group relative flex flex-col gap-3 p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark shadow-sm opacity-90 active:scale-[0.98] transition-transform duration-100">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold text-slate-500 dark:text-slate-400">#REP-0048</span>
+<!-- Not synced icon example -->
+<span class="material-symbols-outlined text-[16px] text-slate-500/50" title="Waiting to sync">cloud_off</span>
+</div>
+<span class="flex items-center gap-1 text-xs font-semibold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-700/50 px-2 py-1 rounded-full border border-slate-200 dark:border-slate-700">
+                            Scheduled
+                        </span>
+</div>
+<div class="flex gap-4">
+<div class="flex-1">
+<h3 class="text-base font-bold text-slate-900 dark:text-white mb-1">Bakery Ltd</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 leading-snug">890 Pastry Lane, Kitchen Area</p>
+</div>
+<div class="size-16 rounded-lg bg-slate-100 dark:bg-background-dark flex items-center justify-center shrink-0 border border-slate-200 dark:border-border-dark">
+<span class="material-symbols-outlined text-slate-400 text-[24px]">kitchen</span>
+</div>
+</div>
+<div class="h-px w-full bg-slate-100 dark:bg-border-dark my-1"></div>
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-1.5 text-slate-500 dark:text-slate-400 font-medium">
+<span class="material-symbols-outlined text-[18px]">low_priority</span>
+                            Low Priority
+                        </div>
+<div class="flex items-center gap-1.5 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-[16px]">event</span>
+                            Tomorrow, 9:00 AM
+                        </div>
+</div>
+</article>
+<!-- Completed Ticket Example -->
+<article class="group relative flex flex-col gap-3 p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark shadow-sm opacity-60 grayscale hover:grayscale-0 transition-all">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold text-slate-500 dark:text-slate-400">#REP-0039</span>
+</div>
+<span class="flex items-center gap-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-900/30 px-2 py-1 rounded-full border border-emerald-200 dark:border-emerald-900/50">
+                            Done
+                        </span>
+</div>
+<div class="flex gap-4">
+<div class="flex-1">
+<h3 class="text-base font-bold text-slate-900 dark:text-white mb-1">City Library</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 leading-snug">Main St, Reading Room</p>
+</div>
+</div>
+</article>
+<div class="h-8"></div> <!-- Spacer for FAB -->
+</div>
+</main>
+<!-- Floating Action Button -->
+<a href="../submit_repair_request_screen/code.html" class="absolute bottom-24 right-4 size-14 bg-primary text-white rounded-2xl shadow-lg shadow-primary/30 flex items-center justify-center hover:scale-105 active:scale-95 transition-all z-30 no-underline">
+<span class="material-symbols-outlined text-[28px]">add</span>
+</a>
+<!-- Bottom Navigation -->
+<nav class="h-20 w-full bg-white dark:bg-card-dark border-t border-slate-200 dark:border-border-dark grid grid-cols-4 items-center justify-items-center pb-4 pt-2 z-20">
+<a href="../task_list_screen/code.html" class="flex flex-col items-center gap-1 w-full text-slate-400 hover:text-primary transition-colors no-underline">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</a>
+<a href="../repair_tickets_list_screen/code.html" class="flex flex-col items-center gap-1 w-full text-primary no-underline">
+<span class="material-symbols-outlined text-[24px] fill-current">handyman</span>
+<span class="text-[10px] font-medium">Repairs</span>
+</a>
+<a href="../enter_parts_used_screen/code.html" class="flex flex-col items-center gap-1 w-full text-slate-400 hover:text-primary transition-colors no-underline">
+<span class="material-symbols-outlined text-[24px]">inventory_2</span>
+<span class="text-[10px] font-medium">Inventory</span>
+</a>
+<a href="../settings_&_configuration_screen/code.html" class="flex flex-col items-center gap-1 w-full text-slate-400 hover:text-primary transition-colors no-underline">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</a>
+</nav>
+</div>
+<script src="../shared/nav.js"></script>
+</body></html>

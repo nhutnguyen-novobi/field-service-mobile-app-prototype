@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Complete Repair Task</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "card-dark": "#1c242c", // Slightly lighter than background-dark
+                        "border-dark": "#2a3441",
+                        "muted": "#9dabb9",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+        /* Custom scrollbar for horizontal lists */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Blur effect for the bottom sticky bar */
+        .glass-panel {
+            background: rgba(16, 25, 34, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased text-slate-900 dark:text-white pb-32">
+<!-- Sticky Header -->
+<div class="sticky top-0 z-40 bg-background-light dark:bg-background-dark border-b border-gray-200 dark:border-border-dark">
+<div class="flex items-center p-4 justify-between h-16">
+<div class="flex items-center gap-4">
+<a href="../active_task_screen/code.html" class="flex items-center justify-center text-slate-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</a>
+<div>
+<h2 class="text-base font-bold leading-tight dark:text-white">#REP-2024-001</h2>
+<p class="text-xs text-muted font-normal truncate max-w-[150px]">Acme Corp HQ - HVAC Unit 4</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20">
+<span class="material-symbols-outlined text-amber-500 text-[16px]">wifi_off</span>
+<span class="text-xs font-medium text-amber-500">Offline</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content Container -->
+<div class="flex flex-col gap-6 p-4 max-w-lg mx-auto">
+<!-- Status & Context Chips -->
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-card-dark border border-border-dark pl-2 pr-3">
+<span class="material-symbols-outlined text-green-500 text-[18px]">check_circle</span>
+<p class="text-white text-xs font-medium">Warranty Active</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-card-dark border border-border-dark pl-2 pr-3">
+<span class="material-symbols-outlined text-primary text-[18px]">priority_high</span>
+<p class="text-white text-xs font-medium">High Priority</p>
+</div>
+</div>
+<!-- Customer Card -->
+<div class="flex items-stretch justify-between gap-4 rounded-xl bg-white dark:bg-card-dark p-4 shadow-sm border border-gray-100 dark:border-border-dark">
+<div class="flex flex-col gap-1 flex-[2_2_0px]">
+<p class="text-muted text-xs font-medium uppercase tracking-wider">Customer</p>
+<p class="text-slate-900 dark:text-white text-base font-bold leading-tight">Acme Corporation</p>
+<p class="text-muted text-sm font-normal">123 Industrial Blvd, Sector 7</p>
+<div class="flex items-center gap-2 mt-2">
+<button class="bg-primary/10 hover:bg-primary/20 text-primary rounded-md p-2 transition-colors">
+<span class="material-symbols-outlined text-[20px]">call</span>
+</button>
+<button class="bg-primary/10 hover:bg-primary/20 text-primary rounded-md p-2 transition-colors">
+<span class="material-symbols-outlined text-[20px]">near_me</span>
+</button>
+</div>
+</div>
+<div class="w-24 h-24 bg-center bg-no-repeat bg-cover rounded-lg flex-none border border-gray-200 dark:border-border-dark" data-alt="Map view showing location pin in industrial area" data-location="Los Angeles" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCNhRPUjJ_41MIzZEWkz8_vXg10_FhL1ztBhG0r7zjdW_MuZsaLIlaTPp37rKbu0Q-FED0QrLC7_y9j04wBqfXwuRr01TYXet6-wutTZcu2-A5ZzWtvXitnonr0rILLbpaZkHG6R7fLvK6KvYashyn5gn6xgA4uwzuuD5F42EH6-ecwSfVUrjZowOVQvVVR0KOlqFvzIVLVvYwybqvsOQNRxVkpfVxRB-14nVKzkRc-l_1TPYwtejc0B1Cep-vVIGbkB0eLtP0unso");'></div>
+</div>
+<!-- Labor & Time Section -->
+<div>
+<div class="flex items-center justify-between mb-3 px-1">
+<h3 class="text-slate-900 dark:text-white text-base font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">schedule</span>
+                    Labor &amp; Time
+                </h3>
+<button class="text-primary text-sm font-medium hover:underline">Edit</button>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="flex flex-col gap-1 rounded-xl p-4 bg-white dark:bg-card-dark border border-gray-100 dark:border-border-dark">
+<p class="text-muted text-xs font-medium">Duration</p>
+<p class="text-slate-900 dark:text-white text-2xl font-bold font-mono tracking-tight">2h 15m</p>
+</div>
+<div class="flex flex-col gap-1 rounded-xl p-4 bg-white dark:bg-card-dark border border-gray-100 dark:border-border-dark">
+<div class="flex justify-between items-center">
+<p class="text-muted text-xs font-medium">Timesheet</p>
+</div>
+<div class="flex flex-col gap-0.5 mt-1">
+<div class="flex justify-between text-sm">
+<span class="text-muted">Start</span>
+<span class="text-slate-900 dark:text-white font-mono">09:00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-muted">End</span>
+<span class="text-slate-900 dark:text-white font-mono">11:15</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Parts Consumed Section -->
+<div>
+<div class="flex items-center justify-between mb-3 px-1">
+<h3 class="text-slate-900 dark:text-white text-base font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">inventory_2</span>
+                    Parts Used
+                </h3>
+<button class="text-primary text-sm font-medium hover:underline">Add</button>
+</div>
+<div class="flex flex-col rounded-xl bg-white dark:bg-card-dark border border-gray-100 dark:border-border-dark overflow-hidden divide-y divide-gray-100 dark:divide-border-dark">
+<!-- Part Item 1 -->
+<div class="flex items-center justify-between p-4 hover:bg-gray-50 dark:hover:bg-[#232b34] transition-colors">
+<div class="flex items-center gap-3">
+<div class="bg-gray-100 dark:bg-[#111418] p-2 rounded-lg">
+<span class="material-symbols-outlined text-muted text-[20px]">build_circle</span>
+</div>
+<div>
+<p class="text-slate-900 dark:text-white text-sm font-medium">Compressor Valve</p>
+<p class="text-muted text-xs">SKU: CV-2023-X</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-slate-900 dark:text-white text-sm font-mono font-bold">x1</span>
+</div>
+</div>
+<!-- Part Item 2 -->
+<div class="flex items-center justify-between p-4 hover:bg-gray-50 dark:hover:bg-[#232b34] transition-colors">
+<div class="flex items-center gap-3">
+<div class="bg-gray-100 dark:bg-[#111418] p-2 rounded-lg">
+<span class="material-symbols-outlined text-muted text-[20px]">water_drop</span>
+</div>
+<div>
+<p class="text-slate-900 dark:text-white text-sm font-medium">Coolant Liquid 5L</p>
+<p class="text-muted text-xs">SKU: CL-500-L</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-slate-900 dark:text-white text-sm font-mono font-bold">x2</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Evidence / Photos Section -->
+<div>
+<div class="flex items-center justify-between mb-3 px-1">
+<h3 class="text-slate-900 dark:text-white text-base font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">photo_camera</span>
+                    Evidence
+                </h3>
+<span class="text-muted text-xs">3 photos attached</span>
+</div>
+<div class="flex gap-3 overflow-x-auto no-scrollbar pb-2">
+<!-- Add Photo Button -->
+<button class="flex shrink-0 w-28 h-28 flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-gray-300 dark:border-border-dark bg-transparent hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-primary">add_a_photo</span>
+<span class="text-xs font-medium text-muted">Add Photo</span>
+</button>
+<!-- Photo 1 -->
+<div class="relative shrink-0 w-28 h-28 rounded-xl overflow-hidden group">
+<img alt="Close up of mechanical parts inside a machine" class="w-full h-full object-cover" data-alt="Close up of mechanical parts inside a machine" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBe_5e4jCSP-iTJpO1gig0egFqipbpR4aqKIU8MchzqMkuVT_N2_ecN7GT9Xk0henL4crvJIE-i7fDSf2pk4TSpVB2Ch21bfqMV55f_hFwg8M3s_SWFfzYYeJnelgA8MIhiTrn4QNOmFNBsXi-DGWHk0y-JrP_iwXtuMXmGLnpBUiDQ7BudRnVKKL6L3Sitl59WEdNihlpx6_szAzQ_en8UKCDOyhnmQlr-adICqDSrRCQfTowqXFwi7ODW_PES6RguzV1vbQ3MxgE"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white">visibility</span>
+</div>
+<span class="absolute bottom-1 right-1 bg-black/60 text-white text-[10px] px-1.5 py-0.5 rounded backdrop-blur-sm">Before</span>
+</div>
+<!-- Photo 2 -->
+<div class="relative shrink-0 w-28 h-28 rounded-xl overflow-hidden group">
+<img alt="Repair technician working on an electrical panel" class="w-full h-full object-cover" data-alt="Repair technician working on an electrical panel" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgvz2Ai1ZebI4u1FH61xtWBzDQtMLmCcTs6CQrTXvjQfZlAWCRadMrt5LJGq0Z5LHZEWWjLg5xgcOXwE6wHJ-OHWGHF--mvPhwxVHfOI2KGTIicMuDhMn8djgZr2ez2gGU1mKTd8vebP15zzjG5xELpifp3Y1bMLr25bnRLtuqN7m6KQIgvjllKc6aDGcq5n6E9uQpN5ZDpA9OLVzfEm7ac2Y8HFKN_m_LIrdYNFZpLRPFBg55Nn62MLIiXBx7PHPpkUvyhVry-cs"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white">visibility</span>
+</div>
+<span class="absolute bottom-1 right-1 bg-black/60 text-white text-[10px] px-1.5 py-0.5 rounded backdrop-blur-sm">During</span>
+</div>
+<!-- Photo 3 -->
+<div class="relative shrink-0 w-28 h-28 rounded-xl overflow-hidden group">
+<img alt="Fixed electrical wiring panel clean setup" class="w-full h-full object-cover" data-alt="Fixed electrical wiring panel clean setup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0b8nQVYRA8qCDujk-8H0Jth2T3NfussIT-fBFAHKgtfbwIwCpJmlytpa0lKgEfHet2f-YuVAR8CAMpio880Fqvo-oBTO7Oq4Y61D_oMSxoLXmn2KZSp5agJK3P73vBW3gG44HAZe77pybcF68jUW0osx6z0FbMs05Xue5OHAT595lKWmSSpx7lR7gBlB7k9Pc7p1aeDSR2Q-a6ZLDPMraThC2RwL0t-kZ1EaqF-tPBF5yisZ_1lK8UeYmMgODZmJYmZgSdGg3c7w"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white">visibility</span>
+</div>
+<span class="absolute bottom-1 right-1 bg-primary text-white text-[10px] px-1.5 py-0.5 rounded backdrop-blur-sm">After</span>
+</div>
+</div>
+</div>
+<!-- Notes Section -->
+<div>
+<div class="flex items-center justify-between mb-3 px-1">
+<h3 class="text-slate-900 dark:text-white text-base font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">description</span>
+                    Technician Notes
+                </h3>
+</div>
+<div class="rounded-xl bg-white dark:bg-card-dark border border-gray-100 dark:border-border-dark p-4">
+<p class="text-sm text-slate-700 dark:text-gray-300 leading-relaxed">
+                    Replaced the faulty compressor valve. Checked pressure levels, now stable at optimal range. Cleaned the surrounding area. System is running smoothly.
+                </p>
+</div>
+</div>
+<!-- Signature Section -->
+<div>
+<div class="flex items-center justify-between mb-3 px-1">
+<h3 class="text-slate-900 dark:text-white text-base font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">ink_pen</span>
+                    Sign-off
+                </h3>
+</div>
+<div class="rounded-xl bg-white dark:bg-card-dark border border-dashed border-gray-300 dark:border-border-dark p-4 flex flex-col items-center justify-center h-32 relative cursor-pointer hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+<div class="text-center">
+<span class="material-symbols-outlined text-muted text-3xl mb-1">draw</span>
+<p class="text-sm font-medium text-muted">Tap to sign</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Bottom Actions -->
+<div class="fixed bottom-0 left-0 w-full glass-panel border-t border-gray-200 dark:border-border-dark px-4 py-4 z-50">
+<div class="max-w-lg mx-auto flex flex-col gap-3">
+<!-- Summary Row inside action bar -->
+<div class="flex justify-between items-center text-xs text-muted px-1">
+<span>Task #REP-2024-001</span>
+<span>Unsynced Changes: 4</span>
+</div>
+<!-- Primary Action Button -->
+<a href="../customer_signature_screen/code.html" class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-primary/25 flex items-center justify-center gap-3 transition-all active:scale-[0.98] no-underline">
+<span class="material-symbols-outlined">check_circle</span>
+                Complete Task
+            </a>
+</div>
+</div>
+<script src="../shared/nav.js"></script>
+</body></html>

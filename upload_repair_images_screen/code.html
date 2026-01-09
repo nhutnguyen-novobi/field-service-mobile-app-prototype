@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Upload Repair Images</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922", // Deep charcoal
+                        "surface-dark": "#1e293b", // Lighter dark for cards
+                        "border-dark": "#334155", // Slate 700ish
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.375rem", // rounded-md
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem", 
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        
+        /* Custom Safe Area utilities for standalone/PWA feel */
+        .pt-safe-top {
+            padding-top: env(safe-area-inset-top, 20px);
+        }
+        .pb-safe-bottom {
+            padding-bottom: env(safe-area-inset-bottom, 20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased text-slate-900 dark:text-white h-screen flex flex-col overflow-hidden selection:bg-primary/30">
+<!-- Top Navigation Bar -->
+<div class="sticky top-0 z-50 flex items-center justify-between bg-background-light dark:bg-background-dark p-4 pt-safe-top border-b border-gray-200 dark:border-border-dark/50">
+<button class="flex h-10 w-10 items-center justify-center rounded-full text-slate-500 hover:bg-slate-200 dark:text-slate-400 dark:hover:bg-surface-dark transition-colors">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h2 class="flex-1 text-center text-lg font-semibold tracking-tight">Repair Evidence</h2>
+<button class="flex h-10 items-center justify-center rounded-lg px-4 text-sm font-semibold text-primary hover:bg-primary/10 transition-colors">
+            Save
+        </button>
+</div>
+<!-- Main Content Area -->
+<div class="flex-1 overflow-y-auto overflow-x-hidden no-scrollbar pb-safe-bottom">
+<!-- Task Context -->
+<div class="px-5 pt-6 pb-2">
+<div class="mb-1 flex items-center gap-2">
+<span class="inline-flex items-center rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary ring-1 ring-inset ring-primary/20">Active Task</span>
+<span class="text-xs text-slate-500">Today, 10:30 AM</span>
+</div>
+<h3 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white mb-2">Task #4092 - HVAC Repair</h3>
+<p class="text-sm font-normal leading-relaxed text-slate-500 dark:text-slate-400">
+                Document damage to the condenser coils and wiring before starting the repair procedure.
+            </p>
+</div>
+<!-- Progress / Sync Status -->
+<div class="px-5 py-4">
+<div class="mb-2 flex justify-between text-xs font-medium">
+<span class="text-slate-400 dark:text-slate-400">Syncing 3 of 4 images...</span>
+<span class="text-primary">75%</span>
+</div>
+<div class="h-1.5 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-surface-dark">
+<div class="h-full rounded-full bg-primary transition-all duration-500 ease-out" style="width: 75%"></div>
+</div>
+</div>
+<!-- Upload Action Area (Dropzone) -->
+<div class="px-5 pb-6">
+<div class="group relative flex flex-col items-center justify-center gap-4 rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 p-8 text-center transition-all hover:border-primary/50 hover:bg-slate-100 dark:border-border-dark dark:bg-surface-dark/40 dark:hover:border-primary/50 dark:hover:bg-surface-dark active:scale-[0.99]">
+<div class="flex items-center gap-4">
+<div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-[24px]">photo_camera</span>
+</div>
+<div class="h-8 w-[1px] bg-slate-200 dark:bg-slate-700"></div>
+<div class="flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400">
+<span class="material-symbols-outlined text-[24px]">photo_library</span>
+</div>
+</div>
+<div>
+<p class="text-sm font-semibold text-slate-900 dark:text-white">Tap to take photo or upload</p>
+<p class="mt-1 text-xs text-slate-500 dark:text-slate-400">JPG, PNG from Camera or Gallery</p>
+</div>
+<button aria-label="Upload Images" class="absolute inset-0 z-10 cursor-pointer opacity-0"></button>
+</div>
+</div>
+<!-- Images Grid -->
+<div class="px-5 pb-20">
+<div class="mb-4 flex items-center justify-between">
+<h4 class="text-sm font-semibold text-slate-900 dark:text-white">Attached Evidence (4)</h4>
+<button class="text-xs font-medium text-primary hover:text-primary/80">Select All</button>
+</div>
+<div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
+<!-- Card 1: Synced -->
+<div class="group relative aspect-square w-full overflow-hidden rounded-xl bg-slate-100 dark:bg-surface-dark shadow-sm border border-slate-200 dark:border-border-dark">
+<img alt="Damaged Wiring" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Close up of damaged industrial wiring and electrical components" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCN8iLTiQyuE5aEk5kprce4lNBOxWwi6sLtoe0h8URYwSdEfEdd9mm-igo2r9xMvfAZeDCaBkuaKf4DITRbf7-Vbz0JdKCQqUZKualXNGYIXhL-5a9-vhp7aB10h_bQDBbiNi7zXNMninhDT8LhHcJuuuVDCWE1q24sU2gz0NdX4zp2etN-CWnemXA-yLWSwxjWH7Djf5VL5qijIbvUp27rj-sDKLsxNf77-Hm_1Has_LMDJ8H45vDrnqOZvF1nunY_A27R_L_0dHs"/>
+<!-- Overlay Gradient -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
+<!-- Delete Action -->
+<button class="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md transition-colors hover:bg-red-500/80 active:scale-95">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+<!-- Status Info -->
+<div class="absolute bottom-2 left-2 right-2 flex items-center justify-between">
+<span class="truncate text-[10px] font-medium text-white/90">Damaged Wiring</span>
+<div class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-green-500/20 text-green-400 backdrop-blur-md">
+<span class="material-symbols-outlined text-[14px]">cloud_done</span>
+</div>
+</div>
+</div>
+<!-- Card 2: Synced -->
+<div class="group relative aspect-square w-full overflow-hidden rounded-xl bg-slate-100 dark:bg-surface-dark shadow-sm border border-slate-200 dark:border-border-dark">
+<img alt="Serial Number" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Metal serial number plate on industrial HVAC equipment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSyqtw0NjCFYe_LTG5MWj-ViY-ZR02-lTuoqdrQN3hmV-gs7TOEKG0g8qUf4FuHM_xNqpt5vJfqeDVOukODiXRkvt0N70JikqPz_Sl6dSY0GEvu38pnyvzPINakh4Dn8Uha-R7uLpnwaD5ZYw1eWG9prnacrJsBdGOIRaFvUhLg-gwgP5KBWtTFNNrBxUOwhsJd5ZRftoH_kIiiCTeNjiBKPIzxHo362hNAvl72d1oY0enHC2GzfbRiuhGRmQUBY4fcbLYIhRg-1E"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
+<button class="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md transition-colors hover:bg-red-500/80 active:scale-95">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+<div class="absolute bottom-2 left-2 right-2 flex items-center justify-between">
+<span class="truncate text-[10px] font-medium text-white/90">Serial Plate</span>
+<div class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-green-500/20 text-green-400 backdrop-blur-md">
+<span class="material-symbols-outlined text-[14px]">cloud_done</span>
+</div>
+</div>
+</div>
+<!-- Card 3: Pending Sync (Yellow/Orange) -->
+<div class="group relative aspect-square w-full overflow-hidden rounded-xl bg-slate-100 dark:bg-surface-dark shadow-sm border border-slate-200 dark:border-border-dark">
+<img alt="Unit Overview" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Wide shot of industrial AC unit on a rooftop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtoz0oPG7lc_3ZJKuIt-bcXD-aFaLe-Ncz7M0ZN2IImK42_HPVchgTmovs1-Qp-hVi9MeoUBN7JGo_3XfrYRj_zH-mmsjX5cfAHb4f_N_ThjCA-B7y7fS1mcCNWtApyOziuUaBuPDZI-aSoc8fhte5h_jo1Tynx-kKyo8PudtZr_qblPcZPXCITOchW62t43HXgBAZM3y7n1ivw2yYiGnRBGALZ1ed5EH5w1CKYqPOCfX2ctJns-OQ4N8NdwTNH9lbCS2wctr6v_g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
+<button class="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md transition-colors hover:bg-red-500/80 active:scale-95">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+<div class="absolute bottom-2 left-2 right-2 flex items-center justify-between">
+<span class="truncate text-[10px] font-medium text-white/90">Unit Overview</span>
+<div class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-amber-500/20 text-amber-400 backdrop-blur-md">
+<span class="material-symbols-outlined animate-pulse text-[14px]">sync</span>
+</div>
+</div>
+</div>
+<!-- Card 4: Local Only (Offline) -->
+<div class="group relative aspect-square w-full overflow-hidden rounded-xl bg-slate-100 dark:bg-surface-dark shadow-sm border border-slate-200 dark:border-border-dark">
+<img alt="Rust Damage" class="h-full w-full object-cover grayscale transition-transform duration-300 group-hover:grayscale-0" data-alt="Close up of rusted metal pipe joint" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1ll7H5ds5a1rvpEI5tgGyUThRvCfI3uM99TgQKrio8nhItK9BHFYP48hmNtPR3tXjaxJcIL1ExBuGL6iFg5xpyyYIcGxlim91lyCcUUScsJFIxz7aEQkMw1vS_XmPZarNfkdArDt3XDRWLp3ynC5W04o0YqoNMHa0MV02FOro0S1yniWJNlXz10spHaRQtbtbDA1iXZSMYOlzTMN0xRh1UIQihWnk3fnCRVFa6Um-F97Iqcymc2mM-LLdWPxCSw-6lI94bgxyVgA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
+<button class="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md transition-colors hover:bg-red-500/80 active:scale-95">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+<div class="absolute bottom-2 left-2 right-2 flex items-center justify-between">
+<span class="truncate text-[10px] font-medium text-white/90">Rust Damage</span>
+<div class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-slate-600/50 text-slate-300 backdrop-blur-md">
+<span class="material-symbols-outlined text-[14px]">cloud_off</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Footer -->
+<div class="border-t border-slate-200 bg-background-light dark:bg-background-dark dark:border-border-dark p-4 pb-safe-bottom z-20">
+<div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
+<span class="flex items-center gap-1.5">
+<span class="block h-2 w-2 rounded-full bg-green-500"></span>
+                All changes saved locally
+            </span>
+<span>Last sync: 1 min ago</span>
+</div>
+<button class="flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-sm font-bold text-white shadow-lg shadow-primary/25 transition-transform active:scale-[0.98]">
+<span class="material-symbols-outlined text-[20px]">check</span>
+            Complete Evidence
+        </button>
+</div>
+<script src="../shared/nav.js"></script>
+</body></html>

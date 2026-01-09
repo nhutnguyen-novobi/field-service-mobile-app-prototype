@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sync Conflict Resolution</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for clean look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased">
+<!-- Main Container -->
+<div class="relative flex h-screen w-full flex-col overflow-hidden max-w-md mx-auto border-x border-gray-800/50 shadow-2xl">
+<!-- Top App Bar -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between shrink-0 z-10">
+<div class="text-gray-900 dark:text-white flex size-12 shrink-0 items-center justify-start cursor-pointer">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</div>
+<h2 class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Sync Conflict</h2>
+<div class="flex w-12 items-center justify-end cursor-pointer">
+<span class="text-[#9dabb9] text-base font-bold leading-normal tracking-[0.015em] shrink-0">Help</span>
+</div>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto no-scrollbar pb-32">
+<!-- Headline & Context -->
+<div class="px-4 pt-4 pb-2">
+<div class="flex items-start gap-3 mb-4">
+<div class="p-2 rounded-full bg-red-500/10 text-red-500 shrink-0 mt-1">
+<span class="material-symbols-outlined text-[24px]">warning</span>
+</div>
+<div>
+<h2 class="text-gray-900 dark:text-white tracking-tight text-2xl font-bold leading-tight">Conflict: Repair Order #4402</h2>
+<p class="text-gray-500 dark:text-[#9dabb9] text-sm font-normal leading-normal pt-1">
+                            The server version has changed since you last synced. Please review differences below.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Divider -->
+<div class="h-px bg-gray-200 dark:bg-gray-800 mx-4 mb-6"></div>
+<!-- Conflict Card 1: Status (Critical) -->
+<div class="px-4 mb-6">
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-gray-900 dark:text-white text-base font-bold">Status Field</h3>
+<span class="bg-red-500/10 text-red-500 text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wide">Critical</span>
+</div>
+<div class="flex flex-col rounded-xl bg-white dark:bg-[#1c2127] shadow-[0_0_4px_rgba(0,0,0,0.1)] overflow-hidden">
+<!-- Comparison Grid -->
+<div class="grid grid-cols-2 divide-x divide-gray-100 dark:divide-gray-800">
+<!-- Local Side -->
+<div class="p-4 flex flex-col gap-3 relative bg-primary/5 dark:bg-primary/10">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-[18px]">smartphone</span>
+<span class="text-xs font-bold uppercase tracking-wide">Your Device</span>
+</div>
+<div>
+<p class="text-gray-900 dark:text-white text-lg font-bold leading-tight">Completed</p>
+<p class="text-gray-500 dark:text-[#9dabb9] text-xs mt-1">Edited just now</p>
+</div>
+<div class="absolute top-0 right-0 w-3 h-3 bg-primary rounded-bl-lg"></div>
+</div>
+<!-- Server Side -->
+<div class="p-4 flex flex-col gap-3">
+<div class="flex items-center gap-2 text-gray-500 dark:text-[#9dabb9]">
+<span class="material-symbols-outlined text-[18px]">dns</span>
+<span class="text-xs font-bold uppercase tracking-wide">Server</span>
+</div>
+<div>
+<p class="text-gray-900 dark:text-white text-lg font-medium leading-tight opacity-80 decoration-dashed">Cancelled</p>
+<p class="text-gray-500 dark:text-[#9dabb9] text-xs mt-1">Updated 5m ago by Admin</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Conflict Card 2: Description (Text diff) -->
+<div class="px-4 mb-6">
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-gray-900 dark:text-white text-base font-bold">Technician Notes</h3>
+<span class="bg-yellow-500/10 text-yellow-500 text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wide">Modified</span>
+</div>
+<div class="flex flex-col rounded-xl bg-white dark:bg-[#1c2127] shadow-[0_0_4px_rgba(0,0,0,0.1)] overflow-hidden">
+<div class="flex flex-col divide-y divide-gray-100 dark:divide-gray-800">
+<!-- Local -->
+<div class="p-4 bg-primary/5 dark:bg-primary/10">
+<div class="flex justify-between items-center mb-2">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-[16px]">smartphone</span>
+<span class="text-xs font-bold uppercase">Local Change</span>
+</div>
+</div>
+<p class="text-gray-900 dark:text-white text-sm leading-relaxed">
+                                Replaced the intake valve. Customer requested <span class="bg-primary/20 text-primary font-semibold px-1 rounded">rush delivery</span> for the spare parts.
+                            </p>
+</div>
+<!-- Server -->
+<div class="p-4">
+<div class="flex justify-between items-center mb-2">
+<div class="flex items-center gap-2 text-gray-500 dark:text-[#9dabb9]">
+<span class="material-symbols-outlined text-[16px]">dns</span>
+<span class="text-xs font-bold uppercase">Server Version</span>
+</div>
+<span class="text-[10px] text-gray-400">12:30 PM</span>
+</div>
+<p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                                Replaced the intake valve. Customer requested <span class="bg-red-500/20 text-red-400 font-semibold px-1 rounded line-through">standard shipping</span> for the spare parts.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Conflict Card 3: Image/Attachment -->
+<div class="px-4 mb-6">
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-gray-900 dark:text-white text-base font-bold">Proof of Service</h3>
+<span class="bg-blue-500/10 text-blue-500 text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wide">Added</span>
+</div>
+<div class="rounded-xl bg-white dark:bg-[#1c2127] p-4 shadow-[0_0_4px_rgba(0,0,0,0.1)] flex gap-4">
+<div class="flex-1 space-y-2">
+<div class="flex items-center gap-2 text-primary mb-1">
+<span class="material-symbols-outlined text-[16px]">add_a_photo</span>
+<span class="text-xs font-bold uppercase">New Local File</span>
+</div>
+<div class="w-full aspect-square rounded-lg bg-cover bg-center border border-gray-700 relative group" data-alt="Close up of a mechanical intake valve part" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCGbTMBQciY33CBV6enE-mg8hZpVTkecwTMtfW4W7KAg0GP-76rxau8LvdM0SNEqgcA9Y-oFqWTn5SEY2VcpKCGBuzt2fVyccR9ktMb9GinF7Mun26YCOZ6JrG0EgcXNK5trjj_EKMImXsSjKBAbRz5IkVFxZxKz0Ms6NLQxzSE1mi0N9FKWt4ZyV2uzA6NBFLNASSORzV4SAt1hk-FBa5sEHtbsUmp0Gth5f1mBVqPdTbCi7hH6AglmJJkZT479850_is_5wFYX8g");'>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white">visibility</span>
+</div>
+</div>
+</div>
+<div class="flex-1 flex items-center justify-center border border-dashed border-gray-700 rounded-lg">
+<div class="text-center p-4">
+<span class="material-symbols-outlined text-gray-600 text-3xl mb-2">image_not_supported</span>
+<p class="text-xs text-gray-500">No image on server</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Accordion for non-conflicting -->
+<div class="px-4 pb-8">
+<button class="w-full flex items-center justify-between p-4 rounded-xl bg-gray-100 dark:bg-[#151a21] border border-transparent hover:border-gray-700 transition-colors group">
+<div class="flex items-center gap-3">
+<div class="bg-green-500/20 p-1.5 rounded-full text-green-500">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</div>
+<span class="text-gray-600 dark:text-gray-400 text-sm font-medium">12 other fields match perfectly</span>
+</div>
+<span class="material-symbols-outlined text-gray-500 group-hover:text-white transition-colors">expand_more</span>
+</button>
+</div>
+<div class="h-6 w-full"></div>
+</div>
+<!-- Sticky Bottom Actions -->
+<div class="absolute bottom-0 w-full bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-gray-800 p-4 pb-8 z-20 shadow-[0_-4px_20px_rgba(0,0,0,0.3)]">
+<div class="flex flex-col gap-3">
+<div class="grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 rounded-lg bg-[#283039] px-4 py-3.5 text-white font-bold text-sm hover:bg-[#323b46] active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">cloud_download</span>
+                        Keep Server
+                    </button>
+<button class="flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3.5 text-white font-bold text-sm hover:bg-blue-600 active:scale-95 transition-all shadow-lg shadow-blue-500/20">
+<span class="material-symbols-outlined text-[20px]">save_as</span>
+                        Keep Local
+                    </button>
+</div>
+<button class="w-full flex items-center justify-center gap-2 rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-3 text-gray-700 dark:text-[#9dabb9] font-semibold text-sm hover:bg-gray-100 dark:hover:bg-[#1c2127] transition-colors">
+<span class="material-symbols-outlined text-[18px]">call_merge</span>
+                    Merge Manually
+                </button>
+</div>
+</div>
+</div>
+<script src="../shared/nav.js"></script>
+</body></html>

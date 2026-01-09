@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Customer Signature Screen</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#1c2127",
+                        "surface-light": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for preview */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased selection:bg-primary/30">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden pb-24">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-20 flex items-center justify-between bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-4 py-3 border-b border-slate-200 dark:border-slate-800">
+<a href="../complete_repair_task_screen/code.html" class="text-primary text-base font-medium hover:opacity-80 transition-opacity no-underline">
+                Cancel
+            </a>
+<h1 class="text-lg font-bold leading-tight tracking-tight flex-1 text-center">
+                Finalize Task #4021
+            </h1>
+<div class="w-[50px] flex justify-end">
+<!-- Placeholder for spacing balance or right action icon -->
+<button class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col gap-6 p-4">
+<!-- Document Preview Card -->
+<section class="flex flex-col gap-3">
+<div class="flex items-center justify-between px-1">
+<h2 class="text-slate-900 dark:text-white text-lg font-bold">Service Summary</h2>
+<button class="text-primary text-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">fullscreen</span>
+                        Expand
+                    </button>
+</div>
+<div class="relative overflow-hidden rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 bg-surface-light dark:bg-surface-dark group">
+<!-- Invoice Header Image/Pattern -->
+<div class="h-24 bg-cover bg-center relative" data-alt="Abstract gradient background representing service flow" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA36T2qD0h2w-C-w-Nf6LOF40eNxcu2OKWJO-zyaaCsxT0_W79XtdIJZQkLjtxSmORZKebr_IuIM-aaQUIfRgcb8OAe6CZtWPQu8RgyVjgpnzn8FVBPw-SQT5FyIzwZL92EDpYluj2SScI5XyJuFwKm7LJVUwRQHkEKDiyU-wLzVqCwLFZ-ezqRX6JcuLeJQwMoQxi_kBlGn_b3ubHf-3jwzSrqq3X4T3HB7NL7tU0CTMxVwxIcuZxXhRq0ePF0jCV7dVbnaL_HpJI');">
+<div class="absolute inset-0 bg-black/40"></div>
+<div class="absolute bottom-3 left-4 text-white">
+<p class="text-xs font-medium opacity-80 uppercase tracking-wider">Invoice #INV-2023-001</p>
+<p class="font-bold text-lg">HVAC Repair &amp; Maintenance</p>
+</div>
+</div>
+<!-- Details -->
+<div class="p-4 flex flex-col gap-4">
+<div class="flex justify-between items-start border-b border-slate-100 dark:border-slate-700/50 pb-3">
+<div>
+<p class="text-sm text-slate-500 dark:text-slate-400">Service Location</p>
+<p class="text-base font-medium mt-0.5">Building B, Unit 402</p>
+</div>
+<div class="text-right">
+<p class="text-sm text-slate-500 dark:text-slate-400">Date</p>
+<p class="text-base font-medium mt-0.5">Oct 24, 2023</p>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="text-slate-600 dark:text-slate-300">Labor (2.5 hrs)</span>
+<span class="font-mono">$250.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-600 dark:text-slate-300">Parts (Filter, Coolant)</span>
+<span class="font-mono">$100.00</span>
+</div>
+<div class="flex justify-between text-base font-bold text-slate-900 dark:text-white pt-2 border-t border-slate-100 dark:border-slate-700/50">
+<span>Total</span>
+<span class="text-primary">$350.00</span>
+</div>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800/50 p-3 rounded-lg text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                            By signing below, I acknowledge that the work described above has been performed to my satisfaction and agree to the terms and conditions.
+                        </div>
+</div>
+</div>
+</section>
+<!-- Signer Identity Fields -->
+<section class="flex flex-col gap-4">
+<h3 class="text-slate-900 dark:text-white text-xl font-bold px-1">Customer Acknowledgment</h3>
+<div class="grid gap-4">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Printed Name</label>
+<div class="relative">
+<input class="w-full h-12 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-surface-dark px-4 text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="Enter customer full name" type="text"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl pointer-events-none">person</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Job Title <span class="text-slate-400 font-normal">(Optional)</span></label>
+<div class="relative">
+<input class="w-full h-12 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-surface-dark px-4 text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="e.g. Site Manager" type="text"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl pointer-events-none">badge</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Signature Pad -->
+<section class="flex flex-col gap-2">
+<div class="flex justify-between items-end px-1 mb-1">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Signature</label>
+<button class="text-red-500 hover:text-red-400 text-xs font-medium uppercase tracking-wide flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">ink_eraser</span> Clear
+                    </button>
+</div>
+<!-- Canvas Container -->
+<div class="relative w-full h-56 rounded-xl bg-[#f8fafc] border-2 border-dashed border-slate-300 dark:border-slate-600 overflow-hidden shadow-inner cursor-crosshair touch-none">
+<!-- "Paper" styling override for dark mode to ensure high contrast signature experience -->
+<!-- Placeholder Text -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
+<span class="text-4xl font-bold text-slate-200 dark:text-slate-300/50 opacity-50 font-handwriting rotate-[-12deg]">Sign Here</span>
+</div>
+<!-- Simulated Ink Stroke (Visual only for mockup) -->
+<svg class="absolute top-0 left-0 w-full h-full pointer-events-none" style="filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.1));">
+<path d="M 80 120 Q 150 60 200 130 T 320 140" fill="none" stroke="#137fec" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<!-- Canvas would be here in real implementation -->
+<canvas class="w-full h-full opacity-0" id="signature-canvas"></canvas>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 px-1">
+                    Please sign within the box above.
+                </p>
+</section>
+</main>
+<!-- Sticky Bottom Action Bar -->
+<footer class="fixed bottom-0 left-0 right-0 z-30 bg-background-light/95 dark:bg-[#101922]/95 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 p-4 pb-8 safe-area-pb">
+<div class="max-w-md mx-auto flex flex-col gap-4">
+<!-- Options -->
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-3">
+<div class="relative inline-block w-10 h-6 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-4 h-4 rounded-full bg-white border-4 appearance-none cursor-pointer translate-x-1 top-1 left-0 checked:right-0 checked:translate-x-5 transition-transform duration-200" id="email-toggle" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-300 dark:bg-slate-700 cursor-pointer peer-checked:bg-primary" for="email-toggle"></label>
+</div>
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300 cursor-pointer select-none" for="email-toggle">Email copy to customer</label>
+</div>
+</div>
+<!-- Main Action -->
+<a href="../task_list_screen/code.html" class="relative w-full h-14 bg-primary hover:bg-blue-600 active:bg-blue-700 text-white rounded-xl font-bold text-lg shadow-lg shadow-blue-500/20 flex items-center justify-center gap-2 transition-all transform active:scale-[0.98] no-underline">
+<span class="material-symbols-outlined">cloud_upload</span>
+                    Save &amp; Sync
+                </a>
+</div>
+</footer>
+<!-- CSS for Toggle Switch Logic (Pure CSS) -->
+<style>
+            #email-toggle:checked + label {
+                background-color: #137fec;
+            }
+        </style>
+</div>
+<script src="../shared/nav.js"></script>
+</body></html>

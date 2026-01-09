@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Paused Task Screen</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101922;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b4754;
+            border-radius: 4px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white antialiased">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto border-x border-slate-800 shadow-2xl">
+<!-- Header -->
+<div class="flex items-center justify-between p-4 bg-background-light dark:bg-background-dark sticky top-0 z-10">
+<a href="../active_task_screen/code.html" class="text-slate-900 dark:text-white flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</a>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight flex-1 text-center">
+                Task #OD-2942
+            </h2>
+<div class="flex w-10 items-center justify-end">
+<span class="material-symbols-outlined text-green-500" title=" synced">cloud_done</span>
+</div>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 flex flex-col gap-6 p-4">
+<!-- Hero Status Card -->
+<div class="flex flex-col items-center justify-center rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#1c2127] p-8 shadow-sm">
+<div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-orange-500/10 dark:bg-orange-500/20">
+<span class="material-symbols-outlined text-orange-600 dark:text-orange-500 text-4xl filled">pause</span>
+</div>
+<p class="text-slate-500 dark:text-[#9dabb9] text-sm font-medium uppercase tracking-wider mb-1">Timer Paused</p>
+<h1 class="text-slate-900 dark:text-white text-5xl font-mono font-bold tracking-tighter mb-4 tabular-nums">01:42:15</h1>
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">
+<span class="material-symbols-outlined text-sm text-slate-500 dark:text-slate-400">location_on</span>
+<span class="text-slate-700 dark:text-slate-300 text-sm font-medium">HVAC Repair - Unit 4B</span>
+</div>
+</div>
+<!-- Primary Action -->
+<div class="flex flex-col gap-3">
+<a href="../active_task_screen/code.html" class="group flex w-full cursor-pointer items-center justify-center gap-3 overflow-hidden rounded-lg h-14 bg-primary hover:bg-blue-600 active:scale-[0.98] transition-all text-white text-lg font-bold shadow-lg shadow-blue-500/20 no-underline">
+<span class="material-symbols-outlined group-hover:animate-pulse">play_arrow</span>
+<span>Resume Task</span>
+</a>
+</div>
+<!-- Secondary Actions Grid -->
+<div>
+<h3 class="text-slate-900 dark:text-white text-sm font-semibold mb-3 px-1">Actions</h3>
+<div class="grid grid-cols-1 gap-3">
+<!-- Comment Button -->
+<button class="flex w-full items-center gap-4 rounded-lg border border-slate-200 dark:border-[#3b4754] bg-white dark:bg-[#1c2127] p-4 text-left hover:bg-slate-50 dark:hover:bg-[#252b33] transition-colors group">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chat_bubble</span>
+</div>
+<div class="flex-1">
+<h4 class="text-slate-900 dark:text-white font-bold text-base">Add Comment</h4>
+<p class="text-slate-500 dark:text-[#9dabb9] text-sm">Log notes about the pause</p>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</button>
+<!-- Declare Issue Button -->
+<button class="flex w-full items-center gap-4 rounded-lg border border-slate-200 dark:border-[#3b4754] bg-white dark:bg-[#1c2127] p-4 text-left hover:bg-slate-50 dark:hover:bg-[#252b33] transition-colors group">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-500">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div class="flex-1">
+<h4 class="text-slate-900 dark:text-white font-bold text-base">Declare Issue</h4>
+<p class="text-slate-500 dark:text-[#9dabb9] text-sm">Report a blocker</p>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</button>
+<!-- Reschedule Button -->
+<button class="flex w-full items-center gap-4 rounded-lg border border-slate-200 dark:border-[#3b4754] bg-white dark:bg-[#1c2127] p-4 text-left hover:bg-slate-50 dark:hover:bg-[#252b33] transition-colors group">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">calendar_clock</span>
+</div>
+<div class="flex-1">
+<h4 class="text-slate-900 dark:text-white font-bold text-base">Reschedule</h4>
+<p class="text-slate-500 dark:text-[#9dabb9] text-sm">Move task to another time</p>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Footer Meta -->
+<div class="mt-auto mb-6 px-4">
+<div class="flex flex-col items-center justify-center border-t border-slate-200 dark:border-slate-800 pt-4">
+<p class="text-slate-500 dark:text-[#9dabb9] text-xs font-medium text-center flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">info</span>
+                    Paused by: John Doe • Today, 10:45 AM
+                </p>
+</div>
+</div>
+</div>
+<script src="../shared/nav.js"></script>
+</body></html>

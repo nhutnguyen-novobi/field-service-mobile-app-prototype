@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Field Service Connect - Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#1c242d",
+                        "card-dark": "#1e293b",
+                        "border-dark": "#2d3748",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .screen-link {
+            transition: all 0.2s ease;
+        }
+        .screen-link:hover {
+            transform: translateX(4px);
+        }
+        .category-section {
+            animation: fadeIn 0.3s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .flow-arrow {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-background-dark text-white font-display antialiased min-h-screen">
+    <!-- Hero Header -->
+    <header class="relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-purple-500/10"></div>
+        <div class="relative max-w-4xl mx-auto px-6 py-16 text-center">
+            <div class="flex items-center justify-center gap-4 mb-6">
+                <div class="h-20 w-20 bg-gradient-to-br from-primary to-blue-600 rounded-2xl flex items-center justify-center shadow-xl shadow-primary/30">
+                    <span class="material-symbols-outlined text-white text-4xl">engineering</span>
+                </div>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                Field Service Connect
+            </h1>
+            <p class="text-lg text-gray-400 max-w-xl mx-auto mb-8">
+                Mobile app prototype for field service technicians. Explore all screens and user flows below.
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-500">
+                <span class="flex items-center gap-2 bg-surface-dark px-4 py-2 rounded-full border border-border-dark">
+                    <span class="material-symbols-outlined text-primary text-lg">smartphone</span>
+                    Mobile-First Design
+                </span>
+                <span class="flex items-center gap-2 bg-surface-dark px-4 py-2 rounded-full border border-border-dark">
+                    <span class="material-symbols-outlined text-green-400 text-lg">wifi_off</span>
+                    Offline-Ready
+                </span>
+                <span class="flex items-center gap-2 bg-surface-dark px-4 py-2 rounded-full border border-border-dark">
+                    <span class="material-symbols-outlined text-orange-400 text-lg">dark_mode</span>
+                    Dark Theme
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-6 pb-20">
+        <!-- User Flow Diagram -->
+        <section class="mb-16 category-section">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary">account_tree</span>
+                Main User Flow
+            </h2>
+            <div class="bg-surface-dark rounded-2xl border border-border-dark p-6 overflow-x-auto">
+                <div class="flex items-center gap-3 min-w-max text-sm">
+                    <a href="login_screen/code.html" class="bg-blue-900/30 text-blue-300 px-4 py-2 rounded-lg border border-blue-800 hover:bg-blue-900/50 transition-colors">Login</a>
+                    <span class="material-symbols-outlined text-gray-600 flow-arrow">arrow_forward</span>
+                    <a href="task_list_screen/code.html" class="bg-green-900/30 text-green-300 px-4 py-2 rounded-lg border border-green-800 hover:bg-green-900/50 transition-colors">Task List</a>
+                    <span class="material-symbols-outlined text-gray-600 flow-arrow">arrow_forward</span>
+                    <a href="task_details_screen/code.html" class="bg-purple-900/30 text-purple-300 px-4 py-2 rounded-lg border border-purple-800 hover:bg-purple-900/50 transition-colors">Task Details</a>
+                    <span class="material-symbols-outlined text-gray-600 flow-arrow">arrow_forward</span>
+                    <a href="start_repair_task_screen/code.html" class="bg-yellow-900/30 text-yellow-300 px-4 py-2 rounded-lg border border-yellow-800 hover:bg-yellow-900/50 transition-colors">Start Task</a>
+                    <span class="material-symbols-outlined text-gray-600 flow-arrow">arrow_forward</span>
+                    <a href="active_task_screen/code.html" class="bg-orange-900/30 text-orange-300 px-4 py-2 rounded-lg border border-orange-800 hover:bg-orange-900/50 transition-colors">Active Task</a>
+                    <span class="material-symbols-outlined text-gray-600 flow-arrow">arrow_forward</span>
+                    <a href="complete_repair_task_screen/code.html" class="bg-pink-900/30 text-pink-300 px-4 py-2 rounded-lg border border-pink-800 hover:bg-pink-900/50 transition-colors">Complete</a>
+                    <span class="material-symbols-outlined text-gray-600 flow-arrow">arrow_forward</span>
+                    <a href="customer_signature_screen/code.html" class="bg-emerald-900/30 text-emerald-300 px-4 py-2 rounded-lg border border-emerald-800 hover:bg-emerald-900/50 transition-colors">Signature</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen Categories Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Authentication -->
+            <section class="category-section">
+                <h3 class="text-lg font-semibold mb-4 flex items-center gap-2 text-gray-300">
+                    <span class="material-symbols-outlined text-blue-400">lock</span>
+                    Authentication
+                </h3>
+                <div class="bg-surface-dark rounded-xl border border-border-dark overflow-hidden">
+                    <a href="login_screen/code.html" class="screen-link flex items-center gap-4 p-4 border-b border-border-dark hover:bg-white/5">
+                        <div class="w-12 h-12 rounded-lg bg-blue-900/30 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-blue-400">login</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-white">Login Screen</h4>
+                            <p class="text-sm text-gray-500">User authentication</p>
+                        </div>
+                        <span class="material-symbols-outlined text-gray-600">chevron_right</span>
+                    </a>
+                    <a href="forgot_password_screen/code.html" class="screen-link flex items-center gap-4 p-4 hover:bg-white/5">
+                        <div class="w-12 h-12 rounded-lg bg-orange-900/30 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-orange-400">lock_reset</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-white">Forgot Password</h4>
+                            <p class="text-sm text-gray-500">Password recovery</p>
+                        </div>
+                        <span class="material-symbols-outlined text-gray-600">chevron_right</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Task Management -->
+            <section class="category-section">
+                <h3 class="text-lg font-semibold mb-4 flex items-center gap-2 text-gray-300">
+                    <span class="material-symbols-outlined text-green-400">task</span>
+                    Task Management
+                </h3>
+                <div class="bg-surface-dark rounded-xl border border-border-dark overflow-hidden">
+                    <a href="task_list_screen/code.html" class="screen-link flex items-center gap-4 p-4 border-b border-border-dark hover:bg-white/5">
+                        <div class="w-12 h-12 rounded-lg bg-green-900/30 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-green-400">list</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-white">Task List</h4>
+                            <p class="text-sm text-gray-500">All scheduled tasks</p>
+                        </div>
+                        <span class="material-symbols-outlined text-gray-600">chevron_right</span>
+                    </a>
+                    <a href="task_details_screen/code.html" class="screen-link flex items-center gap-4 p-4 border-b border-border-dark hover:bg-white/5">
+                        <div class="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-purple-400">info</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-white">Task Details</h4>
+                            <p class="text-sm text-gray-500">View task information</p>
+                        </div>
+                        <span class="material-symbols-outlined text-gray-600">chevron_right</span>
+                    </a>
+                    <a href="task_map_view_screen/code.html" class="screen-link flex items-center gap-4 p-4 border-b border-border-dark hover:bg-white/5">
+                        <div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-cyan-400">map</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-white">Map View</h4>
+                            <p class="text-sm text-gray-500">Tasks on map</p>
+                        </div>
+                        <span class="material-symbols-outlined text-gray-600">chevron_right</span>
+                    </a>
+                    <a href="task_list_filter_modal/code.html" class="screen-link flex items-center gap-4 p-4 hover:bg-white/5">
+                        <div class="w-12 h-12 rounded-lg bg-indigo-900/30 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-indigo-400">filter_list</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-white">Filter Modal</h4>
+                            <p class="text-sm text-gray-500">Filter & sort tasks</p>
+                        </div>
+                        <span class="material-symbols-outlined text-gray-600">chevron_right</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Repair Flow -->
+            <section class="category-section">
+                <h3 class="text-lg font-semibold mb-4 flex items-center gap-2 text-gray-300">
+                    <span class="material-symbols-outlined text-orange-400">construction</span>
+                    Repair Workflow
+                </h3>
+                <div class="bg-surface-dark rounded-xl border border-border-dark overflow-hidden">
+                    <a href="repair_tickets_list_screen/code.html" class="screen-link flex items-center gap-4 p-4 border-b border-border-dark hover:bg-white/5">
+                        <div class="w-12 h-12 rounded-lg bg-orange-900/30 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-orange-400">handyman</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-white">Repair Tickets</h4>
+                            <p class="text-sm text-gray-500">All repair requests</p>
+                        </div>
+                        <span class="material-symbols-outlined text-gray-600">chevron_right</span>
+                    </a>
+                    <a href="repair_ticket_details_screen/code.html" class="screen-link flex items-center gap-4 p-4 border-b border-border-dark hover:bg-white/5">
+                        <div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-red-400">description</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-white">Ticket Details</h4>
+                            <p class="text-sm text-gray-500">Repair ticket info</p>
+                        </div>
+                        <span class="material-symbols-outlined text-gray-600">chevron_right</span>
+                    </a>
+                    <a href="submit_repair_request_screen/code.html" class="screen-link flex items-center gap-4 p-4 hover:bg-white/5">
+                        <div class="w-12 h-12 rounded-lg bg-yellow-900/30 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-yellow-400">add_circle</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-white">Submit Request</h4>
+                            <p class="text-sm text-gray-500">New repair request</p>
+                        </div>
+                        <span class="material-symbols-outlined text-gray-600">chevron_right</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Active Work -->
+            <section class="category-section">
+                <h3 class="text-lg font-semibold mb-4 flex items-center gap-2 text-gray-300">
+                    <span class="material-symbols-outlined text-yellow-400">timer</span>
+                    Active Work
+                </h3>
+                <div class="bg-surface-dark rounded-xl border border-border-dark overflow-hidden">
+                    <a href="start_repair_task_screen/code.html" class="screen-link flex items-center gap-4 p-4 border-b border-border-dark hover:bg-white/5">
+                        <div class="w-12 h-12 rounded-lg bg-green-900/30 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-green-400">play_arrow</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-white">Start Task</h4>
+                            <p class="text-sm text-gray-500">Begin work session</p>
+                        </div>
+                        <span class="material-symbols-outlined text-gray-600">chevron_right</span>
+                    </a>
+                    <a href="active_task_screen/code.html" class="screen-link flex items-center gap-4 p-4 border-b border-border-dark hover:bg-white/5">
+                        <div class="w-12 h-12 rounded-lg bg-blue-900/30 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-blue-400">schedule</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-white">Active Task</h4>
+                            <p class="text-sm text-gray-500">Timer running</p>
+                        </div>
+                        <span class="material-symbols-outlined text-gray-600">chevron_right</span>
+                    </a>
+                    <a href="paused_task_screen/code.html" class="screen-link flex items-center gap-4 p-4 border-b border-border-dark hover:bg-white/5">
+                        <div class="w-12 h-12 rounded-lg bg-orange-900/30 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-orange-400">pause</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-white">Paused Task</h4>
+                            <p class="text-sm text-gray-500">Work paused</p>
+                        </div>
+                        <span class="material-symbols-outlined text-gray-600">chevron_right</span>
+                    </a>
+                    <a href="log_additional_time_screen/code.html" class="screen-link flex items-center gap-4 p-4 hover:bg-white/5">
+                        <div class="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-purple-400">more_time</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-white">Log Time</h4>
+                            <p class="text-sm text-gray-500">Additional time entry</p>
+                        </div>
+                        <span class="material-symbols-outlined text-gray-600">chevron_right</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Completion -->
+            <section class="category-section">
+                <h3 class="text-lg font-semibold mb-4 flex items-center gap-2 text-gray-300">
+                    <span class="material-symbols-outlined text-emerald-400">check_circle</span>
+                    Completion
+                </h3>
+                <div class="bg-surface-dark rounded-xl border border-border-dark overflow-hidden">
+                    <a href="completion_checklist_screen/code.html" class="screen-link flex items-center gap-4 p-4 border-b border-border-dark hover:bg-white/5">
+                        <div class="w-12 h-12 rounded-lg bg-teal-900/30 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-teal-400">checklist</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-white">Checklist</h4>
+                            <p class="text-sm text-gray-500">Completion steps</p>
+                        </div>
+                        <span class="material-symbols-outlined text-gray-600">chevron_right</span>
+                    </a>
+                    <a href="enter_parts_used_screen/code.html" class="screen-link flex items-center gap-4 p-4 border-b border-border-dark hover:bg-white/5">
+                        <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-amber-400">inventory_2</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-white">Parts Used</h4>
+                            <p class="text-sm text-gray-500">Log consumed parts</p>
+                        </div>
+                        <span class="material-symbols-outlined text-gray-600">chevron_right</span>
+                    </a>
+                    <a href="upload_repair_images_screen/code.html" class="screen-link flex items-center gap-4 p-4 border-b border-border-dark hover:bg-white/5">
+                        <div class="w-12 h-12 rounded-lg bg-pink-900/30 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-pink-400">photo_camera</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-white">Upload Images</h4>
+                            <p class="text-sm text-gray-500">Photo evidence</p>
+                        </div>
+                        <span class="material-symbols-outlined text-gray-600">chevron_right</span>
+                    </a>
+                    <a href="complete_repair_task_screen/code.html" class="screen-link flex items-center gap-4 p-4 border-b border-border-dark hover:bg-white/5">
+                        <div class="w-12 h-12 rounded-lg bg-green-900/30 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-green-400">task_alt</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-white">Complete Task</h4>
+                            <p class="text-sm text-gray-500">Finish work order</p>
+                        </div>
+                        <span class="material-symbols-outlined text-gray-600">chevron_right</span>
+                    </a>
+                    <a href="customer_signature_screen/code.html" class="screen-link flex items-center gap-4 p-4 hover:bg-white/5">
+                        <div class="w-12 h-12 rounded-lg bg-indigo-900/30 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-indigo-400">draw</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-white">Signature</h4>
+                            <p class="text-sm text-gray-500">Customer sign-off</p>
+                        </div>
+                        <span class="material-symbols-outlined text-gray-600">chevron_right</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Sync & Offline -->
+            <section class="category-section">
+                <h3 class="text-lg font-semibold mb-4 flex items-center gap-2 text-gray-300">
+                    <span class="material-symbols-outlined text-cyan-400">sync</span>
+                    Sync & Offline
+                </h3>
+                <div class="bg-surface-dark rounded-xl border border-border-dark overflow-hidden">
+                    <a href="global_offline_banner/code.html" class="screen-link flex items-center gap-4 p-4 border-b border-border-dark hover:bg-white/5">
+                        <div class="w-12 h-12 rounded-lg bg-yellow-900/30 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-yellow-400">wifi_off</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-white">Offline Banner</h4>
+                            <p class="text-sm text-gray-500">Connection status</p>
+                        </div>
+                        <span class="material-symbols-outlined text-gray-600">chevron_right</span>
+                    </a>
+                    <a href="sync_status_icon/code.html" class="screen-link flex items-center gap-4 p-4 border-b border-border-dark hover:bg-white/5">
+                        <div class="w-12 h-12 rounded-lg bg-blue-900/30 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-blue-400">cloud_sync</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-white">Sync Icon</h4>
+                            <p class="text-sm text-gray-500">Sync indicator</p>
+                        </div>
+                        <span class="material-symbols-outlined text-gray-600">chevron_right</span>
+                    </a>
+                    <a href="pending_actions_queue_screen/code.html" class="screen-link flex items-center gap-4 p-4 border-b border-border-dark hover:bg-white/5">
+                        <div class="w-12 h-12 rounded-lg bg-orange-900/30 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-orange-400">pending_actions</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-white">Pending Queue</h4>
+                            <p class="text-sm text-gray-500">Queued actions</p>
+                        </div>
+                        <span class="material-symbols-outlined text-gray-600">chevron_right</span>
+                    </a>
+                    <a href="sync_conflict_resolution_screen/code.html" class="screen-link flex items-center gap-4 p-4 border-b border-border-dark hover:bg-white/5">
+                        <div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-red-400">error</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-white">Conflict Resolution</h4>
+                            <p class="text-sm text-gray-500">Handle conflicts</p>
+                        </div>
+                        <span class="material-symbols-outlined text-gray-600">chevron_right</span>
+                    </a>
+                    <a href="sync_success_feedback/code.html" class="screen-link flex items-center gap-4 p-4 border-b border-border-dark hover:bg-white/5">
+                        <div class="w-12 h-12 rounded-lg bg-green-900/30 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-green-400">check</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-white">Sync Success</h4>
+                            <p class="text-sm text-gray-500">Success feedback</p>
+                        </div>
+                        <span class="material-symbols-outlined text-gray-600">chevron_right</span>
+                    </a>
+                    <a href="sync_failure_feedback/code.html" class="screen-link flex items-center gap-4 p-4 hover:bg-white/5">
+                        <div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-red-400">sync_problem</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-white">Sync Failure</h4>
+                            <p class="text-sm text-gray-500">Error handling</p>
+                        </div>
+                        <span class="material-symbols-outlined text-gray-600">chevron_right</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Comments & Notes -->
+            <section class="category-section">
+                <h3 class="text-lg font-semibold mb-4 flex items-center gap-2 text-gray-300">
+                    <span class="material-symbols-outlined text-pink-400">chat</span>
+                    Communication
+                </h3>
+                <div class="bg-surface-dark rounded-xl border border-border-dark overflow-hidden">
+                    <a href="add_comment_screen/code.html" class="screen-link flex items-center gap-4 p-4 hover:bg-white/5">
+                        <div class="w-12 h-12 rounded-lg bg-pink-900/30 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-pink-400">chat_bubble</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-white">Add Comment</h4>
+                            <p class="text-sm text-gray-500">Notes & comments</p>
+                        </div>
+                        <span class="material-symbols-outlined text-gray-600">chevron_right</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Settings -->
+            <section class="category-section">
+                <h3 class="text-lg font-semibold mb-4 flex items-center gap-2 text-gray-300">
+                    <span class="material-symbols-outlined text-gray-400">settings</span>
+                    Settings
+                </h3>
+                <div class="bg-surface-dark rounded-xl border border-border-dark overflow-hidden">
+                    <a href="settings_&_configuration_screen/code.html" class="screen-link flex items-center gap-4 p-4 hover:bg-white/5">
+                        <div class="w-12 h-12 rounded-lg bg-gray-800 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-gray-400">tune</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-white">Configuration</h4>
+                            <p class="text-sm text-gray-500">App settings</p>
+                        </div>
+                        <span class="material-symbols-outlined text-gray-600">chevron_right</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-border-dark py-8 text-center">
+        <p class="text-gray-500 text-sm">Field Service Connect v1.0.0 • Powered by Odoo</p>
+        <p class="text-gray-600 text-xs mt-2">Demo Prototype - All screens are interactive</p>
+    </footer>
+</body>
+</html>
