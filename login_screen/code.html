@@ -47,15 +47,17 @@
     /* Mobile-first: handled by shared/nav.js */
   </style>
   </head>
-<body class="bg-background-light dark:bg-background-dark font-display antialiased text-slate-900 dark:text-white min-h-screen flex flex-col justify-between">
-<!-- Offline Indicator Banner (Conditional State) -->
-<div class="bg-amber-500/10 border-b border-amber-500/20 px-4 py-2 flex items-center justify-center gap-2">
-<span class="material-symbols-outlined text-amber-500 text-[18px]">wifi_off</span>
-<p class="text-amber-500 text-xs font-medium">Offline Mode • Using cached credentials</p>
-</div>
-<!-- Main Content Container -->
-<main class="flex-1 flex flex-col items-center justify-center w-full px-4 sm:px-6 py-8">
-<div class="w-full max-w-[400px] flex flex-col gap-8">
+<body class="bg-background-light dark:bg-background-dark font-display antialiased text-slate-900 dark:text-white">
+<!-- Main App Container -->
+<div class="relative flex min-h-screen w-full flex-col bg-background-light dark:bg-background-dark">
+    <!-- Offline Indicator Banner (Conditional State) -->
+    <div class="bg-amber-500/10 border-b border-amber-500/20 px-4 py-2 flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-amber-500 text-[18px]">wifi_off</span>
+        <p class="text-amber-500 text-xs font-medium">Offline Mode • Using cached credentials</p>
+    </div>
+    <!-- Main Content Container -->
+    <main class="flex-1 flex flex-col items-center justify-center w-full px-4 sm:px-6 py-8">
+        <div class="w-full max-w-[400px] flex flex-col gap-8">
 <!-- Header Section -->
 <div class="flex flex-col items-center gap-6">
 <!-- Logo -->
@@ -114,12 +116,13 @@
 </div>
 </form>
 </div>
-</main>
-<!-- Footer -->
-<footer class="w-full py-6 text-center">
-<p class="text-xs text-slate-500 dark:text-slate-600 font-medium">
+    </main>
+    <!-- Footer -->
+    <footer class="w-full py-6 text-center">
+        <p class="text-xs text-slate-500 dark:text-slate-600 font-medium">
             v1.0.0 • Powered by Odoo
         </p>
-</footer>
+    </footer>
+</div>
 <script src="../shared/nav.js"></script>
 </body></html>
