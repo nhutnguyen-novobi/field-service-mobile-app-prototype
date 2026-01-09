@@ -15,6 +15,9 @@ function initMobileFrame() {
     // Add mobile-container class to body for CSS targeting
     document.body.classList.add('mobile-responsive');
     
+    // Wrap all body content in a mobile container div
+    wrapBodyContent();
+    
     // Inject mobile-first responsive styles
     const mobileStyles = document.createElement('style');
     mobileStyles.id = 'mobile-frame-styles';
@@ -30,22 +33,35 @@ function initMobileFrame() {
         /* Desktop/Tablet - Center content at mobile width */
         @media (min-width: 481px) {
             body.mobile-responsive {
-                display: flex;
-                justify-content: center;
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: center !important;
+                align-items: flex-start;
+                background: #1a1a2e;
             }
             
-            body.mobile-responsive > div:first-of-type {
+            #mobile-content-wrapper {
                 max-width: 430px;
                 width: 100%;
                 box-shadow: 0 0 40px rgba(0,0,0,0.3);
+                min-height: 100vh;
+                min-height: 100dvh;
+                display: flex;
+                flex-direction: column;
+                position: relative;
             }
         }
         
         /* Mobile - Full width */
         @media (max-width: 480px) {
-            body.mobile-responsive > div:first-of-type {
+            #mobile-content-wrapper {
                 max-width: 100%;
                 width: 100%;
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+                min-height: 100dvh;
+                position: relative;
             }
         }
         
@@ -57,6 +73,26 @@ function initMobileFrame() {
     
     // Insert at the beginning of head
     document.head.insertBefore(mobileStyles, document.head.firstChild);
+}
+
+// Wrap all body content in a mobile container
+function wrapBodyContent() {
+    // Skip if already wrapped
+    if (document.getElementById('mobile-content-wrapper')) {
+        return;
+    }
+    
+    // Create wrapper div
+    const wrapper = document.createElement('div');
+    wrapper.id = 'mobile-content-wrapper';
+    
+    // Move all body children into the wrapper
+    while (document.body.firstChild) {
+        wrapper.appendChild(document.body.firstChild);
+    }
+    
+    // Add wrapper to body
+    document.body.appendChild(wrapper);
 }
 
 // Navigation configuration
@@ -122,6 +158,12 @@ function createFloatingNav() {
                 left: 16px;
                 z-index: 9999;
                 font-family: 'Inter', sans-serif;
+            }
+            /* On desktop, position nav relative to centered wrapper */
+            @media (min-width: 481px) {
+                #floating-nav {
+                    left: calc(50% - 215px + 16px); /* 215px = half of 430px max-width */
+                }
             }
             #floating-nav .nav-btn {
                 width: 48px;
@@ -223,7 +265,13 @@ function createFloatingNav() {
             </a>
         </div>
     `;
-    document.body.appendChild(navContainer);
+    // Append to the mobile wrapper if it exists, otherwise body
+    const wrapper = document.getElementById('mobile-content-wrapper');
+    if (wrapper) {
+        wrapper.appendChild(navContainer);
+    } else {
+        document.body.appendChild(navContainer);
+    }
 }
 
 // Toggle menu visibility
