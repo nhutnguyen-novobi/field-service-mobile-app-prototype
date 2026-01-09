@@ -52,12 +52,10 @@
         }
     </style>
 <style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
+    /* Mobile-first: handled by shared/nav.js */
   </style>
   </head>
-<body class="bg-background-light dark:bg-background-dark font-display h-screen flex flex-col overflow-hidden">
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex flex-col">
 <!-- Header -->
 <div class="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-border-dark bg-white dark:bg-background-dark shrink-0">
 <button class="text-gray-900 dark:text-white flex items-center justify-center p-2 rounded-full hover:bg-gray-100 dark:hover:bg-surface-dark transition-colors">

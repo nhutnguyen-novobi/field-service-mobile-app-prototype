@@ -43,14 +43,12 @@
         }
     </style>
 <style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
+    /* Mobile-first: handled by shared/nav.js */
   </style>
   </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased selection:bg-primary/30">
 <!-- Main Container -->
-<div class="relative flex flex-col min-h-screen w-full overflow-hidden">
+<div class="relative flex flex-col min-h-screen w-full bg-background-light dark:bg-background-dark">
 <!-- Sticky Header (TopAppBar) -->
 <header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md px-4 py-3 border-b border-gray-200 dark:border-border-dark">
 <a href="../task_list_screen/code.html" class="flex items-center justify-center w-10 h-10 -ml-2 rounded-full hover:bg-black/5 dark:hover:bg-white/5 active:scale-95 transition-transform">
