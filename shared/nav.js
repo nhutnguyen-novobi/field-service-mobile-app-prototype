@@ -4,111 +4,65 @@
  */
 
 // ============================================
-// MOBILE-FIRST FRAME WRAPPER
+// MOBILE-FIRST RESPONSIVE WRAPPER
 // ============================================
 function initMobileFrame() {
-    // Check if this screen opts out of the mobile frame
-    // Screens with their own phone frames should add: <body class="no-mobile-frame">
+    // Check if this screen opts out of mobile-first styling
     if (document.body.classList.contains('no-mobile-frame')) {
         return;
     }
     
-    // Inject mobile frame styles
+    // Inject mobile-first responsive styles
     const mobileStyles = document.createElement('style');
     mobileStyles.id = 'mobile-frame-styles';
     mobileStyles.textContent = `
-        /* Mobile Frame Container */
+        /* Mobile-First Base Styles */
         html, body {
             margin: 0;
             padding: 0;
             min-height: 100vh;
             min-height: 100dvh;
-            background: #0a0e14 !important;
         }
         
-        /* Override any conflicting min-height */
         body {
             min-height: 100vh !important;
             min-height: 100dvh !important;
             display: flex !important;
             justify-content: center !important;
             align-items: flex-start !important;
-            padding: 0 !important;
         }
         
-        /* Mobile Device Frame - Desktop/Tablet */
+        /* Desktop/Tablet - Constrain to mobile width for demo */
         @media (min-width: 481px) {
-            body {
-                padding: 20px !important;
-                background: linear-gradient(135deg, #0a0e14 0%, #1a1f2e 50%, #0a0e14 100%) !important;
-            }
-            
             body > *:first-child:not(#mobile-frame-styles):not(#floating-nav):not(script):not(style):not(link) {
                 max-width: 430px !important;
                 width: 100% !important;
-                min-height: calc(100vh - 40px) !important;
-                min-height: calc(100dvh - 40px) !important;
-                max-height: calc(100vh - 40px) !important;
-                max-height: calc(100dvh - 40px) !important;
+                min-height: 100vh !important;
+                min-height: 100dvh !important;
                 overflow-y: auto !important;
                 overflow-x: hidden !important;
-                border-radius: 40px !important;
-                box-shadow: 
-                    0 0 0 12px #1c1c1e,
-                    0 0 0 14px #3a3a3c,
-                    0 25px 50px -12px rgba(0, 0, 0, 0.5),
-                    0 0 100px rgba(19, 127, 236, 0.1) !important;
                 position: relative !important;
                 margin: 0 auto !important;
-            }
-            
-            /* Phone notch - positioned at top center of viewport */
-            body::before {
-                content: '';
-                position: fixed;
-                top: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 120px;
-                height: 28px;
-                background: #1c1c1e;
-                border-radius: 0 0 16px 16px;
-                z-index: 10000;
-                pointer-events: none;
             }
         }
         
         /* Mobile - Full width, natural scroll */
         @media (max-width: 480px) {
-            body {
-                background: inherit !important;
-            }
-            
             body > *:first-child:not(#mobile-frame-styles):not(#floating-nav):not(script):not(style):not(link) {
                 max-width: 100% !important;
                 width: 100% !important;
                 min-height: 100vh !important;
                 min-height: 100dvh !important;
-                max-height: none !important;
                 overflow: visible !important;
-                border-radius: 0 !important;
-                box-shadow: none !important;
             }
         }
         
-        /* Ensure scrollable content areas work */
+        /* Ensure smooth scrolling on touch devices */
         .overflow-y-auto, .overflow-auto, [class*="overflow-y-auto"], [class*="overflow-auto"] {
             -webkit-overflow-scrolling: touch;
         }
         
-        /* Fix for fixed elements inside frame */
-        @media (min-width: 481px) {
-            .fixed {
-                position: absolute !important;
-            }
-        }
-        
-        /* Custom scrollbar for the frame */
+        /* Custom scrollbar */
         @media (min-width: 481px) {
             body > *:first-child:not(#mobile-frame-styles):not(#floating-nav):not(script):not(style):not(link)::-webkit-scrollbar {
                 width: 4px;
@@ -119,22 +73,6 @@ function initMobileFrame() {
             body > *:first-child:not(#mobile-frame-styles):not(#floating-nav):not(script):not(style):not(link)::-webkit-scrollbar-thumb {
                 background: rgba(255,255,255,0.2);
                 border-radius: 4px;
-            }
-        }
-        
-        /* Device info label */
-        @media (min-width: 481px) {
-            body::after {
-                content: 'iPhone 14 Pro Max • 430×932';
-                position: fixed;
-                bottom: 8px;
-                left: 50%;
-                transform: translateX(-50%);
-                font-family: 'Inter', -apple-system, sans-serif;
-                font-size: 11px;
-                color: rgba(255,255,255,0.3);
-                pointer-events: none;
-                z-index: 1;
             }
         }
     `;
