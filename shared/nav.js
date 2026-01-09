@@ -15,8 +15,14 @@ function initMobileFrame() {
     // Add mobile-container class to body for CSS targeting
     document.body.classList.add('mobile-responsive');
     
+    // Remove conflicting Tailwind classes from body
+    document.body.classList.remove('flex', 'flex-col', 'flex-row');
+    
     // Wrap all body content in a mobile container div
     wrapBodyContent();
+    
+    // Apply inline styles directly to body for desktop centering (highest specificity)
+    applyBodyStyles();
     
     // Inject mobile-first responsive styles
     const mobileStyles = document.createElement('style');
@@ -30,16 +36,8 @@ function initMobileFrame() {
             min-height: 100dvh;
         }
         
-        /* Desktop/Tablet - Center content at mobile width */
+        /* Desktop/Tablet styles for wrapper */
         @media (min-width: 481px) {
-            body.mobile-responsive {
-                display: flex !important;
-                flex-direction: row !important;
-                justify-content: center !important;
-                align-items: flex-start;
-                background: #1a1a2e;
-            }
-            
             #mobile-content-wrapper {
                 max-width: 430px;
                 width: 100%;
@@ -73,6 +71,46 @@ function initMobileFrame() {
     
     // Insert at the beginning of head
     document.head.insertBefore(mobileStyles, document.head.firstChild);
+}
+
+// Apply body styles directly via inline styles for highest specificity
+function applyBodyStyles() {
+    const isDesktop = window.innerWidth >= 481;
+    
+    if (isDesktop) {
+        document.body.style.display = 'flex';
+        document.body.style.flexDirection = 'row';
+        document.body.style.justifyContent = 'center';
+        document.body.style.alignItems = 'flex-start';
+        document.body.style.background = '#1a1a2e';
+        document.body.style.minHeight = '100vh';
+    } else {
+        // Reset for mobile
+        document.body.style.display = '';
+        document.body.style.flexDirection = '';
+        document.body.style.justifyContent = '';
+        document.body.style.alignItems = '';
+        document.body.style.minHeight = '100vh';
+    }
+    
+    // Re-apply on resize
+    if (!window._mobileFrameResizeListener) {
+        window._mobileFrameResizeListener = true;
+        window.addEventListener('resize', debounce(applyBodyStyles, 100));
+    }
+}
+
+// Simple debounce function
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
 }
 
 // Wrap all body content in a mobile container
